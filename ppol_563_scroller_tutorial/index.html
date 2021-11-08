@@ -27,13 +27,16 @@
                 <!-- The following line is the first instance of a line break; without line breaks text will wrap as a single block -->
                 <br>
                 <h1>How can I create an interactive data visualization that updates as users scroll through?</h1>
-                <p>By Vince Egalla</a></p>
+                
+                <p>By Vince Egalla</p>
+                
                 <p>(Note: If the visualisation doesn't fit your screen, try zooming out with ctrl + - / Cmd + -.) </p>
                 <p>
-                This work is inspired by and draws from the work of Cuthbert Chow, Jim Vallandingham, and Michael Bostock.
+                This work is inspired by and draws from the work of Cuthbert Chow, Jim Vallandingham, and Michael Bostock. 
+                Links to their resources are located at the bottom.
                 <br><br>
                 I am inspired to provide a tutorial on this technique to assist peers in my Master's of Data Science for Public Policy
-                at Georgetown University, who may be interested in creating data story websites. 
+                at Georgetown University, who may be interested in creating data story web pages. 
                 <br><br>
                 On the right, there is a D3.js visualization of the DC Metro System as a graph/network object.
                 </p>
@@ -59,34 +62,45 @@
                 </p>
             </section>
 
-            <section class="step">
+            <section class = "step">
                 <p>
                 <!-- The following line is the first instance h2, check out style.css for how h1/h2 differ -->
                 <h2>Introduction</h2>
-                The four important components of this visualization are:
+
+                The four important components of this style of web page are:
                 <!-- The following line is the first instance of an unordered list -->
                 <ul>
                     <li>index.html</li>
+                    <li>sections.js</li>
                     <li>scroller.js</li>
-                    <li>section.js</li>
                     <li>style.css</li>
-                </ul><br><br>
+                </ul><br>
                 <!-- The following line is the first instance of bolded text -->
                 <b>index.html</b> contains the website metadata and text content. 
                 <br><br>
-                <b>section.js</b> handles data input and draws the visualization using D3.js.
-                <br><br>
-                <b>style.css</b> provides additional styling details.
+                <b>sections.js</b> handles data input and draws the visualization using D3.js.
                 <br><br>
                 <b>scroller.js</b> adds the scrolling-updating component to the website.
                 <br><br>
+                <b>style.css</b> provides additional styling details.
+                <br><br>
+                Each of these components will be explained in a section below.
+            </section>
+
+            <section class = 'step'>
+                <p>
+                <h2>code implementation and testing</h2>
                 Testing of your web page may be done through a local web server, implemented through Python.
                 After setting your working directory to where the HTML is located, use the following:
                 <br><br>
                 <!-- The following line is the first instance of code text (rectangle border with courier font)-->
-                <code>python3 -m http.server</code>
+                <code>python -m http.server 8000</code>
                 <br><br>
-                For sharing to broader audiences, code may be commited to github and made accessible through <a href = 'https://pages.github.com/'>github.io</a>.
+                The web page can then be accessed through <code>localhost:8000</code> in a browser.
+                <br><br>
+                For sharing to broader audiences, code may be commited to github and made accessible through <a href = 'https://pages.github.com/'>Github Pages</a>.
+                <br><br>
+                Developing your web page with a local web server will be much easier than constantly pushing updates to your Github Page repository.
                 </p>
             </section>
 
@@ -112,14 +126,14 @@
                 </p>
             </section>
 
-            <section class="step">
+            <section class = "step">
                 <p>
-                <h2>sections.js</h2>
+                <h2><a href = 'https://github.com/vegalla/vegalla.github.io/blob/master/ppol_563_scroller_tutorial/sections.js'>sections.js</a></h2>
                 The network graph is visualized within the sections.js file. This occurs when sections.js is called at the end of index.html.
                 I'll cover the flow of code to interpret how separate files are now coordinating the visualize the graph on a single page.
                 <br><br>
-                First, there is a <code> < div > </code> section with the ID 'viz', located below the 'step' sections. 
-                Within sections.js, this 'viz' section is assigned an Scalable Vector Graphic (SVG) with width, height, and margin parameters.
+                First, there is a <code> < div > </code> section with the ID 'vis', located below the 'step' sections. 
+                Within sections.js, this 'vis' section is assigned an Scalable Vector Graphic (SVG) with width, height, and margin parameters.
                 This SVG is the canvas, which the network graph is drawn on.
                 <br><br>
                 The graph data, as a JSON file, is imported. The graph has keys for nodes and links. 
@@ -133,49 +147,56 @@
                 
             </section>
 
-            <section class="step">
+            <section class = "step">
                 <p>
                 <br><br><br><br><br>
                 At the bottom of sections.js, there are functions for actions on scrolling. 
-                At minimum, I've maintained the fade in/out of text as the user navigates 'step' sections, compared to Cuthbert Chow's original code.
-                This occurs as the scroller maintains an index of the 'step' sections and tracks user placement on the page.
+                The scroller operates by maintaining an index of the 'step' sections and tracking user placement on the page.
                 Inactive indices are faded out to maintain focus on relevant text.
                 <br><br>
                 Within sections.js, I would also plan to code animations, tool tips, etc. for the visualization on the right. 
                 However, given the intended challenge of creating a custom visualization, I have not yet incorporated animating the network graph.
                 <br><br>
-                I am settling for a single network graph visualization for this assignment, but will continue to build upon this for the final visualization.
+                At minimum, I've maintained the fade in/out of text as the user navigates 'step' sections, compared to Cuthbert Chow's original code which show animated charts, dynamic labels, and force diagrams.
+                I am still developing my own D3.js and require more time and practice to build out animations at every 'step'.
                 </p>
                 
             </section>
 
-            <section class="step">
+            <section class = "step">
                 <p>
-                <h2>scroller.js</h2>
-        
+                <h2><a href = 'https://github.com/vegalla/vegalla.github.io/blob/0a200e26eac0bfc8bd0a7d79b40da632de08e370/ppol_563_scroller_tutorial/scroller.js'>scroller.js</a></h2>
+                This JavaScript file is Cuthbert Chow's adaptation of Jim Vallandingham's <a href = 'https://github.com/vlandham/scroll_demo/blob/gh-pages/js/scroller.js'>reusable scroller</a>.
+                <br><br>
+                Reviewing both scripts, the functions are nearly identical with differences in the beginning concerning how variables are declared. 
+                Additionally, Chow's version has stripped out Vallandingham's comments, which provide code descriptions.
+                <br><br>
+                For easier review, I've added back and supplemented these comments with my own.
+                <br><br>
+
                 </p>
             </section>
 
-            <section class="step">
+            <section class = "step">
                 <p>
-                <h2>styling.css</h2>
+                <h2><a href = 'https://github.com/vegalla/vegalla.github.io/blob/master/ppol_563_scroller_tutorial/style.css'>styling.css</a></h2>
             
                 </p>
             </section>
 
-            <section class="step">
+            <section class = "step">
                 <h1>The End</h1>
                 <p>
-                Thanks for checking this out!
                 <br><br>
-
+                <br><br>
+                <br><br>
                 <b>References</b>
                 <br><br>
                 Scott Murray - Interactive Data Visualization for the Web
                 <br><br>
                 D3.js Graph Gallery - <a href = 'https://www.d3-graph-gallery.com/network.html'>Network Graph</a>
                 <br><br>
-                Cuthbert Chow - <a href = 'https://towardsdatascience.com/how-i-created-an-interactive-scrolling-visualisation-with-d3-js-and-how-you-can-too-e116372e2c73'>How I Created an Interative Scrolling Visualization ...</a>.
+                Cuthbert Chow - <a href = 'https://towardsdatascience.com/how-i-created-an-interactive-scrolling-visualisation-with-d3-js-and-how-you-can-too-e116372e2c73'>How I Created an Interactive, Scrolling Visualisation with D3.js, and how you can too</a>.
                 <br><br>
                 Jim Vallandingham - <a href = 'https://vallandingham.me/scroller.html'>So You Want to Build a Scroller</a>
                 <br><br>
