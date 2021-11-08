@@ -1,29 +1,30 @@
 <html lang="en">
+<!-- head section -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- call to style.css for additional formatting -->
     <link rel = "stylesheet" href="style.css">
+    <!-- call to D3.js to use framework -->
     <script src = 'https://d3js.org/d3.v4.js'></script>
-
+    <!-- meta data -->
     <meta property = 'og:title' content='PPOL 563: Data Visualization Tutorial'/>
     <meta property = 'og:description' content='This interactive website is intended to assist data science students with creating their own scrolling visualization website'/>
     <meta property = 'og:url' content='https://vegalla.github.io/ppol_563_scroller_tutorial/'/>
 
-
+    <!-- title -->
     <title>PPOL 563: Scroller Tutorial</title>
 </head>
 
-
+<!-- body section -->
 <body>
-    <!-- <div id="info">
-        a
-    </div> -->
-    <img src="" alt="">
-    <div id="tooltip"></div>
+    <!-- div for web page -->
     <div id="graphic">
+        <!-- div for left hand side (text content) -->
         <div id="sections">
             <section class="step">
                 <div class="title"></div>
+                <!-- The following line is the first instance of a line break; without line breaks text will wrap as a single block -->
                 <br>
                 <h1>How can I create an interactive data visualization that updates as users scroll through?</h1>
                 <p>By Vince Egalla</a></p>
@@ -48,6 +49,7 @@
                 The data visualizations shared by Madeline and Yousuf highlight data stories that enhance user engagement
                 with animated charts, hoverable tool tips, selectable options, etc.
                 <br><br>
+                <!-- The following line is the first instance of hyperlinking with HTML -->
                 Madeline shared <a href = 'https://pudding.cool/2017/05/song-repetition/'>Are Pop Lyrics Getting More Repetitive?</a>, exploring music with text analysis.
                 <br><br>
                 Yousuf shared <a href = 'http://drones.pitchinteractive.com/'>Out of Sight, Out of Mind</a>, covering drone strikes in Pakistan.
@@ -59,14 +61,17 @@
 
             <section class="step">
                 <p>
+                <!-- The following line is the first instance h2, check out style.css for how h1/h2 differ -->
                 <h2>Introduction</h2>
                 The four important components of this visualization are:
+                <!-- The following line is the first instance of an unordered list -->
                 <ul>
                     <li>index.html</li>
                     <li>scroller.js</li>
                     <li>section.js</li>
                     <li>style.css</li>
                 </ul><br><br>
+                <!-- The following line is the first instance of bolded text -->
                 <b>index.html</b> contains the website metadata and text content. 
                 <br><br>
                 <b>section.js</b> handles data input and draws the visualization using D3.js.
@@ -78,6 +83,7 @@
                 Testing of your web page may be done through a local web server, implemented through Python.
                 After setting your working directory to where the HTML is located, use the following:
                 <br><br>
+                <!-- The following line is the first instance of code text (rectangle border with courier font)-->
                 <code>python3 -m http.server</code>
                 <br><br>
                 For sharing to broader audiences, code may be commited to github and made accessible through <a href = 'https://pages.github.com/'>github.io</a>.
@@ -93,14 +99,14 @@
                 Understanding how tags are used is essential to writing an HTML web page.
                 <br><br>
                 The head contains the web page title and meta data. 
-                The title appears as text within a tab of a web browser. Meta data provides additional information about the page.
+                The title appears as text within a tab of a web browser. Meta data provides additional information about the site.
                 <br><br>
                 In order to use D3.js, it has to be called on, as seen in line 6 of this file. 
                 You may click on the header to access the HTML file, available through Github.
                 Since the D3.js code is available online, it doesn't have to downloaded or installed locally to function as long as it is properly referenced.
                 <br><br>
-                The text you've been reading through is contained with the body section. 
-                Within the body, I've used three HTML tags for Header 1, Header 2, and Paragraph.
+                The text you've been reading through is contained within the body section. 
+                So far, I've used three HTML tags for Header 1, Header 2, and Paragraph.
                 Additionally, text is particularly located in 'step' sections that incorporate the interactive scrolling, explained below.
 
                 </p>
@@ -180,14 +186,13 @@
            
 
         </div>
+        <!-- div for right hand side (visualization) -->
         <div id="vis">
 
         </div>
     </div>
-
-    
-
-    
+        
+    <!-- calls to additional JavaScript functions -->
     <script src = 'scroller.js'></script>
     <script src = 'sections.js'></script>
 
