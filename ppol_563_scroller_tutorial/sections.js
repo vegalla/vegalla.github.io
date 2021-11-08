@@ -128,8 +128,6 @@ function createSizeLegend2(){
 // Each element should also have an associated class name for easy reference
 
 function drawInitial(){
-    createSizeLegend()
-    createSizeLegend2()
 
     let svg = d3.select("#vis")
                     .append('svg')
