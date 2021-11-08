@@ -55,6 +55,80 @@ d3.json("data/dc_metro_graph.json", function(data) {
             .attr("cx", function(d) { return d.x; })
             .attr("cy", function(d) { return d.y; });
     }
+
+    // Tool tips
+
+    // Node tool tips show the ID and Name of a DC Metro station
+
+    // Part of D3's function is too handle when the mouse is over elements
+    // In this case, when a user's mouse is over the circle (node), it calls the function mouseOverNode
+    // When the mouse leaves the element's area, it calls function mouseOutNode
+    svg.selectAll('circle')
+        .on('mouseover', mouseOverNode)
+        .on('mouseout', mouseOutNode)
+
+    // This function selects the circle and adds a border to help highlight selection
+    // Additionally, a tooltip is transitioned in when selected to provide station details.
+    function mouseOverNode(d){
+
+        console.log('hi')
+        d3.select(this)
+            .transition('mouseover').duration(100)
+            .attr('opacity', 1)
+            .attr('stroke-width', 5)
+            .attr('stroke', 'black')
+            
+        d3.select('#tooltip')
+            .style('left', (d3.event.pageX + 10)+ 'px')
+            .style('top', (d3.event.pageY - 25) + 'px')
+            .style('display', 'inline-block')
+            .html(`<strong>ID</strong> ${d.id}
+                   <br>
+                   <strong>Name</strong> ${d.name}`)
+    }
+
+    // This function erases the tool tip display and resets the circle border to zero to remove the highlight.
+    function mouseOutNode(d){
+        d3.select('#tooltip')
+            .style('display', 'none')
+
+        d3.select(this)
+            .transition('mouseout').duration(100)
+            .attr('opacity', 0.8)
+            .attr('stroke-width', 0)
+    }
+
+    // Edge tool tips show what line the station is on.
+    // Although the underlying data is a a multigraph, the visualized graph is a simple graph only showing one edge and therefore one line
+    svg.selectAll('line')
+        .on('mouseover', mouseOverEdge)
+        .on('mouseout', mouseOutEdge)
+
+    function mouseOverEdge(d){
+
+        console.log('hi')
+        d3.select(this)
+            .transition('mouseover').duration(100)
+            .attr('opacity', 1)
+            .attr('stroke-width', 5)
+            .attr('stroke', 'black')
+            
+        d3.select('#tooltip')
+            .style('left', (d3.event.pageX + 10)+ 'px')
+            .style('top', (d3.event.pageY - 25) + 'px')
+            .style('display', 'inline-block')
+            .html(`<strong>Line</strong> ${d.color}`)
+    }
+
+    function mouseOutEdge(d, i){
+        d3.select('#tooltip')
+            .style('display', 'none')
+
+        d3.select(this)
+            .transition('mouseout').duration(100)
+            .attr('opacity', 0.8)
+            .attr('stroke-width', 1)
+    }
 })
 
 // This specifies that scrolling occurs over the 'graphic' div that contains the text content on the left side.
