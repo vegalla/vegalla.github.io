@@ -16,10 +16,6 @@ body {
     margin-right: 50px;
 }
 
-.categoryLegend {
-    font-family: "Domine";
-}
-
 .step {
     margin-bottom: 100px;
     height: 700px;
@@ -90,15 +86,7 @@ svg circle:hover{
     fill: #939393;
 }
 
-.sizeLegend2 {
-    opacity: 0.7
-}
-
 a {
     color: rgb(221, 0, 255);
     text-decoration: none;
-}
-
-img {
-    display: none;
 }

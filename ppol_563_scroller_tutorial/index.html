@@ -40,7 +40,11 @@
                 I am inspired to provide a tutorial on this technique to assist peers in my Master's of Data Science for Public Policy
                 at Georgetown University, who may be interested in creating data story web pages. 
                 <br><br>
-                On the right, there is a D3.js visualization of the DC Metro System as a graph/network object.
+                On the right, there is a D3.js visualization of a network graph. 
+                It's underlying data is the DC Metro system, although you might not be able to tell from it's shape!
+                Although the connections are intact, it's layout is produced by D3.js force simulations.
+                <br><br>
+                Try to find the station you take most frequently!
                 </p>
             </section>
 
@@ -141,7 +145,7 @@
                 The graph data, as a JSON file, is imported. The graph has keys for nodes and links. 
                 Each node has a unique ID and will be drawn as a circle on the graph. Each link has a source and target that connects nodes together.
                 The layout of the nodes is then determined by a force simulation. The nodes are centered around the SVG and ultimately settle on a location,
-                based on some repulsion/attraction paramters.
+                based on some repulsion/attraction parameters.
                 <br><br>
                 The final position of the nodes occurs iteratively from when all nodes are initially drawn on the top left corner.
                 The iterations occur quick enough that it's apparently instantaneous. 
@@ -151,7 +155,8 @@
 
             <section class = "step">
                 <p>
-                <br><br><br><br><br>
+                Compared to the original code for this network graph, I've introduced tooltips that occur when you hover over a node or edge.
+                <br><br>
                 At the bottom of sections.js, there are functions for actions on scrolling. 
                 The scroller operates by maintaining an index of the 'step' sections and tracking user placement on the page.
                 Inactive indices are faded out to maintain focus on relevant text.
@@ -175,34 +180,51 @@
                 <br><br>
                 For easier review, I've added back and supplemented these comments with my own.
                 <br><br>
-
+                The core functionality of this script is to handle user position on the web page.
+                The functions within this script handle when the window is resized to account for different screen sizes or zoom settings
+                and then tracking which 'step' the user is on.
+                <br><br>
+                With the scroller function, additional functionality, such as animations or transitions, can be added in sections.js.
                 </p>
             </section>
 
             <section class = "step">
                 <p>
                 <h2><a href = 'https://github.com/vegalla/vegalla.github.io/blob/master/ppol_563_scroller_tutorial/style.css'>styling.css</a></h2>
-            
+                This file is a stylesheet that formats content within specified HTML tags.
+                <br><br>
+                The website background color, font parameters, tooltip parameters, etc. are all specified in this file.
+                <br><br>
+                For comparison, take a look at this same HTML file without any CSS styling!<br>
+                <a href = 'https://vegalla.github.io/ppol_563_scroller_tutorial/no_style'>no style web page</a>
+                <br><br>
+                You can see that it's essentially a text file with marginal differences thanks to the different header tags.
+                Additionally without the stylesheet, text extends past the screen without the option to scroll over as there is no control on the sections holding text, 
+                such as position or size.
+                <br><br>
+                The code for the visualization is now at the bottom of the page as its div is structurally below the text.
                 </p>
             </section>
 
             <section class = "step">
-                <h1>The End</h1>
+                <h1>References</h1>
                 <p>
+                Scott Murray<br>
+                <a href = 'https://wrlc-gu.primo.exlibrisgroup.com/discovery/fulldisplay?docid=alma991037144430904111&context=L&vid=01WRLC_GUNIV:01WRLC_GUNIV&lang=en&search_scope=DN_and_CI&adaptor=Local%20Search%20Engine&tab=Everything&query=any,contains,interactive%20data%20visualization%20for%20the%20web&sortby=rank'>Interactive Data Visualization for the Web</a><br>
+                Available to Georgetown students online through the library
                 <br><br>
+                D3.js Graph Gallery<br>
+                <a href = 'https://www.d3-graph-gallery.com/network.html'>Network Graph</a>
                 <br><br>
+                Cuthbert Chow <br>
+                <a href = 'https://cuthchow.github.io/college-majors-visualisation/'>College Majors Visualization</a><br>
+                <a href = 'https://towardsdatascience.com/how-i-created-an-interactive-scrolling-visualisation-with-d3-js-and-how-you-can-too-e116372e2c73'>How I Created an Interactive, Scrolling Visualisation with D3.js, and how you can too</a>
                 <br><br>
-                <b>References</b>
+                Jim Vallandingham<br>
+                <a href = 'https://vallandingham.me/scroller.html'>So You Want to Build a Scroller</a>
                 <br><br>
-                Scott Murray - Interactive Data Visualization for the Web
-                <br><br>
-                D3.js Graph Gallery - <a href = 'https://www.d3-graph-gallery.com/network.html'>Network Graph</a>
-                <br><br>
-                Cuthbert Chow - <a href = 'https://towardsdatascience.com/how-i-created-an-interactive-scrolling-visualisation-with-d3-js-and-how-you-can-too-e116372e2c73'>How I Created an Interactive, Scrolling Visualisation with D3.js, and how you can too</a>.
-                <br><br>
-                Jim Vallandingham - <a href = 'https://vallandingham.me/scroller.html'>So You Want to Build a Scroller</a>
-                <br><br>
-                Michael Bostock - <a href = 'https://bost.ocks.org/mike/scroll/'>How to Scroll</a>
+                Michael Bostock<br>
+                <a href = 'https://bost.ocks.org/mike/scroll/'>How to Scroll</a>
                 </p>
                 <span></span><span></span><span></span>                
             </section>
