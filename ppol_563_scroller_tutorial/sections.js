@@ -84,44 +84,6 @@ function createLegend(x, y){
         .call(categoryLegend)
 }
 
-function createSizeLegend(){
-    let svg = d3.select('#legend2')
-    svg.append('g')
-        .attr('class', 'sizeLegend')
-        .attr('transform', `translate(100,50)`)
-
-    sizeLegend2 = d3.legendSize()
-        .scale(salarySizeScale)
-        .shape('circle')
-        .shapePadding(15)
-        .title('Salary Scale')
-        .labelFormat(d3.format("$,.2r"))
-        .cells(7)
-
-    d3.select('.sizeLegend')
-        .call(sizeLegend2)
-}
-
-function createSizeLegend2(){
-    let svg = d3.select('#legend3')
-    svg.append('g')
-        .attr('class', 'sizeLegend2')
-        .attr('transform', `translate(50,100)`)
-
-    sizeLegend2 = d3.legendSize()
-        .scale(enrollmentSizeScale)
-        .shape('circle')
-        .shapePadding(55)
-        .orient('horizontal')
-        .title('Enrolment Scale')
-        .labels(['1000', '200000', '400000'])
-        .labelOffset(30)
-        .cells(3)
-
-    d3.select('.sizeLegend2')
-        .call(sizeLegend2)
-}
-
 // All the initial elements should be create in the drawInitial function
 // As they are required, their attributes can be modified
 // They can be shown or hidden using their 'opacity' attribute
