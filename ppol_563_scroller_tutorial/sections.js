@@ -45,12 +45,14 @@ d3.json("data/dc_metro_graph.json", function(data) {
 
     // This function is run at each iteration of the force algorithm, updating the nodes position.
     function ticked() {
+        // This assigns four attributes to a link, two coordinate pairs that a line is drawn between
+        // x, y pairs will be the location of a node
         link
             .attr("x1", function(d) { return d.source.x; })
             .attr("y1", function(d) { return d.source.y; })
             .attr("x2", function(d) { return d.target.x; })
             .attr("y2", function(d) { return d.target.y; });
-
+        // this assigned two attributes to a node, a coordinate pair for its location
         node
             .attr("cx", function(d) { return d.x; })
             .attr("cy", function(d) { return d.y; });
