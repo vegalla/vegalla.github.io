@@ -82,7 +82,7 @@
                     <li>style.css</li>
                 </ul><br>
                 <!-- The following line is the first instance of bolded text -->
-                <b>index.html</b> contains the website metadata and text content. 
+                <b>index.html</b> contains the website metadata, text content, and calls the functions that make web pages dynamic.
                 <br><br>
                 <b>sections.js</b> handles data input and draws the visualization using D3.js.
                 <br><br>
@@ -90,11 +90,16 @@
                 <br><br>
                 <b>style.css</b> provides additional styling details.
                 <br><br>
-                Each of these components will be explained in a section below.
+                Each of these components will be explained in a section below. 
+                <br><br>
+                I've summarized major concepts behind each file, but reviewing the code and the comments I've included may be beneficial too!
+                Click on purple headers to direct yourself to the code available on Github.
             </section>
 
             <section class = 'step'>
                 <p>
+                <br><br>
+                <br><br>
                 <h2>code implementation and testing</h2>
                 Testing of your web page may be done through a local web server, implemented through Python.
                 After setting your working directory to where the HTML is located, use the following:
@@ -104,7 +109,7 @@
                 <br><br>
                 The web page can then be accessed through <code>localhost:8000</code> in a browser.
                 <br><br>
-                For sharing to broader audiences, code may be commited to github and made accessible through <a href = 'https://pages.github.com/'>Github Pages</a>.
+                For sharing to broader audiences, code may be commited to Github and made accessible through <a href = 'https://pages.github.com/'>Github Pages</a>.
                 <br><br>
                 Developing your web page with a local web server will be much easier than constantly pushing updates to your Github Page repository.
                 </p>
@@ -121,8 +126,7 @@
                 The head contains the web page title and meta data. 
                 The title appears as text within a tab of a web browser. Meta data provides additional information about the site.
                 <br><br>
-                In order to use D3.js, it has to be called on, as seen in line 6 of this file. 
-                You may click on the header to access the HTML file, available through Github.
+                In order to use D3.js, it has to be called on, as seen in the first <code> < script > </script></code> tag.
                 Since the D3.js code is available online, it doesn't have to downloaded or installed locally to function as long as it is properly referenced.
                 <br><br>
                 The text you've been reading through is contained within the body section. 
@@ -135,16 +139,16 @@
             <section class = "step">
                 <p>
                 <h2><a href = 'https://github.com/vegalla/vegalla.github.io/blob/master/ppol_563_scroller_tutorial/sections.js'>sections.js</a></h2>
-                The network graph is visualized within the sections.js file. This occurs when sections.js is called at the end of index.html.
-                I'll cover the flow of code to interpret how separate files are now coordinating the visualize the graph on a single page.
+                The network graph is visualized within the sections.js file. Sections.js is called at the end of index.html.
                 <br><br>
-                First, there is a <code> < div > </code> section with the ID 'vis', located below the 'step' sections. 
-                Within sections.js, this 'vis' section is assigned an Scalable Vector Graphic (SVG) with width, height, and margin parameters.
+                First, there is a <code> < div > </code> section with the ID 'vis' within index.html, located below the 'step' sections. 
+                Within sections.js, this 'vis' section is assigned a Scalable Vector Graphic (SVG) with width, height, and margin parameters.
                 This SVG is the canvas, which the network graph is drawn on.
                 <br><br>
                 The graph data, as a JSON file, is imported. The graph has keys for nodes and links. 
                 Each node has a unique ID and will be drawn as a circle on the graph. Each link has a source and target that connects nodes together.
-                The layout of the nodes is then determined by a force simulation. The nodes are centered around the SVG and ultimately settle on a location,
+                Both the nodes and links are initialized in the top left corner, displayed as a single circle in the first few seconds.
+                However, the final layout of the nodes is then determined by a force simulation. The nodes are centered around the SVG and ultimately settle on a location,
                 based on some repulsion/attraction parameters.
                 <br><br>
                 The final position of the nodes occurs iteratively from when all nodes are initially drawn on the top left corner.
@@ -203,6 +207,27 @@
                 such as position or size.
                 <br><br>
                 The code for the visualization is now at the bottom of the page as its div is structurally below the text.
+                </p>
+            </section>
+
+            <section class = "step">
+                <p>
+                <h2>Considerations & Next Steps</h2>
+                Unfortunately, I haven't answered the question I posed! 
+                While I've built a scrolling website with some minor interactive scrolling component, I haven't built or provided guidance on animated visualizations.
+                Combining both topics of a network graph and animation functions proved to be too difficult in the time available to me, 
+                but it is my final goal to incorporate all of these elements in the final visualization.
+                <br><br>
+                Overall, I hope that I've covered some level of foundation necessary to get started and lead people in the correct direction.
+                <br><br>
+                Lastly, I have two recommendations. 
+                <ul>
+                    <li>Experiment with your page on with a local web server over Github Pages.
+                        It's undoubtedly faster and easier to evaluate if updates broke the web page or not.</li>
+                    <br>
+                    <li>Visualize something you're truly passionate about! It's incredibly rewarding to see your data come to life with D3.</li>
+                </ul>
+
                 </p>
             </section>
 
