@@ -1,7 +1,7 @@
 // Visualization parameters
 const margin = {left: 50, top: 50, bottom: 50, right: 50}
-const width = 1000 - margin.left - margin.right
-const height = 950 - margin.top - margin.bottom
+const width = 800 - margin.left - margin.right
+const height = 800 - margin.top - margin.bottom
 
 // Coordinates were already rescaled to [-1 . 1] in previous processing
 // Set domain to +0.05 to prevent node cut off
@@ -27,8 +27,8 @@ function drawInitial(){
     // Append the svg object to the body of the page, the 'vis' div
     let svg = d3.select("#vis")
         .append('svg')
-        .attr('width', 1000)
-        .attr('height', 950)
+        .attr('width', 800)
+        .attr('height', 750)
         .attr('opacity', 1);
 
     // Initialize the links
@@ -105,7 +105,7 @@ function drawInitial(){
 
             d3.select(this)
                 .transition('mouseout').duration(100)
-                .attr('opacity', 0.8)
+                .attr('opacity', 1)
                 .attr('stroke-width', 0)
         }
 
