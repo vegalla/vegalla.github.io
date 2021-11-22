@@ -190,7 +190,9 @@ function draw1(){
     simulation.alpha(0.9).restart()
 }
 
-function draw2(){
+function draw2(){}
+
+function draw3(){
     
     let svg = d3.select("#vis")
                     .select('svg')
@@ -241,7 +243,7 @@ function draw2(){
         .attr('opacity', 1);
 }
 
-function draw3(){}
+function draw4(){}
 
 //Array of all the graph functions
 //Will be called from the scroller functionality
@@ -249,7 +251,8 @@ function draw3(){}
 let activationFunctions = [
     draw1,
     draw2,
-    draw3
+    draw3,
+    draw4
 ]
 
 // This specifies that scrolling occurs over the 'graphic' div that contains the text content on the left side.
