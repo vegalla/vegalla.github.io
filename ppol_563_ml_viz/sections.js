@@ -186,8 +186,8 @@ function draw1(){
     //         .attr("cy", function(d) { return d.y; });
     // }
 
-    // //Reheat simulation and restart
-    // simulation.alpha(0.9).restart()
+    //Reheat simulation and restart
+    simulation.alpha(0.9).restart()
 }
 
 function draw2(){
@@ -197,14 +197,17 @@ function draw2(){
                     .attr('width', 800)
                     .attr('height', 750)
 
+    simulation.stop()
+
     // Fade links
     svg.selectAll('line')
-        .transition().duration(500).delay(100)
         .attr('opacity', 0);
 
     // Transition Nodes
     svg.selectAll('circle')
-        .transition().duration(500).delay(100)
+        .transition()
+            .duration(500)
+            .delay(1000)
         .attr("cx", function(d) {
             return x_scale(d.cx)
         })
@@ -214,7 +217,8 @@ function draw2(){
 
     // Re-introduce links
     svg.selectAll('line')
-        .transition().duration(500).delay(1000)
+        .transition()
+            .delay(500)
         .attr("x1", function(l) {
             var source_node = dataset.nodes.filter(function(d, i) {
                 return i == l.source.id
@@ -229,7 +233,11 @@ function draw2(){
             d3.select(this).attr("y2", y_scale(target_node.cy));
             return x_scale(target_node.cx)
         })
-        .style("stroke", "#aaa")
+        
+    svg.selectAll('line')
+        .transition()
+            .duration(500)
+            .delay(1500)
         .attr('opacity', 1);
 }
 
