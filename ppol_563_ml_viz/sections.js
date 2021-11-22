@@ -192,7 +192,9 @@ function draw1(){
 
 function draw2(){}
 
-function draw3(){
+function draw3(){}
+
+function draw4(){
     
     let svg = d3.select("#vis")
                     .select('svg')
@@ -244,12 +246,15 @@ function draw3(){
         .attr('opacity', 1);
 }
 
-function draw4(){
+function draw5(){
     let svg = d3.select("#vis")
         .select('svg')
         .attr('width', 800)
         .attr('height', 750)
 
+    // Consider writing this into a function to be neater
+    // Loop through length of d.predictions
+    // enumerate delay start: 0 ++ 500
     svg.selectAll('circle')
         .transition()
             .duration(100)
@@ -419,7 +424,7 @@ function draw4(){
 
 }
 
-function draw5(){}
+function draw6(){}
 
 //Array of all the graph functions
 //Will be called from the scroller functionality
@@ -429,7 +434,8 @@ let activationFunctions = [
     draw2,
     draw3,
     draw4,
-    draw5
+    draw5,
+    draw6
 ]
 
 // This specifies that scrolling occurs over the 'graphic' div that contains the text content on the left side.
