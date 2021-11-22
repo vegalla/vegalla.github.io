@@ -19,7 +19,7 @@ var y_scale = d3.scaleLinear()
     .range([margin.top + height, margin.top])
 
 // Read in DC Metro Graph data and perform the following function to draw it
-d3.json("data/dc_metro_graph.json")
+d3.json("data/dc_metro_graph_predictions.json")
     .then(function(d){
         dataset = d
         drawInitial()
@@ -216,6 +216,7 @@ function draw3(){
         .attr("cy", function(d) {
             return y_scale(d.cy)
         })
+        .style("fill", "#69b3a2")
 
     // Re-introduce links
     svg.selectAll('line')
@@ -243,7 +244,182 @@ function draw3(){
         .attr('opacity', 1);
 }
 
-function draw4(){}
+function draw4(){
+    let svg = d3.select("#vis")
+        .select('svg')
+        .attr('width', 800)
+        .attr('height', 750)
+
+    svg.selectAll('circle')
+        .transition()
+            .duration(100)
+        .style("fill", function(d) {
+            return d.predictions[0]
+        })
+
+    svg.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(500)
+        .style("fill", function(d) {
+            return d.predictions[1]
+        })
+
+    svg.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(1000)
+        .style("fill", function(d) {
+            return d.predictions[2]
+        })
+
+    svg.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(1500)
+        .style("fill", function(d) {
+            return d.predictions[3]
+        })
+
+    svg.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(2000)
+        .style("fill", function(d) {
+            return d.predictions[4]
+        })
+
+    svg.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(2500)
+        .style("fill", function(d) {
+            return d.predictions[5]
+        })
+
+    svg.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(3000)
+        .style("fill", function(d) {
+            return d.predictions[6]
+        })
+
+    svg.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(3500)
+        .style("fill", function(d) {
+            return d.predictions[7]
+        })
+
+    svg.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(4000)
+        .style("fill", function(d) {
+            return d.predictions[8]
+        })
+
+    svg.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(4500)
+        .style("fill", function(d) {
+            return d.predictions[9]
+        })
+
+    svg.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(5000)
+        .style("fill", function(d) {
+            return d.predictions[10]
+        })
+
+    svg.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(5500)
+        .style("fill", function(d) {
+            return d.predictions[11]
+        })
+
+    svg.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(6000)
+        .style("fill", function(d) {
+            return d.predictions[12]
+        })
+
+    svg.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(6500)
+        .style("fill", function(d) {
+            return d.predictions[13]
+        })
+
+    svg.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(7000)
+        .style("fill", function(d) {
+            return d.predictions[14]
+        })
+
+    svg.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(7500)
+        .style("fill", function(d) {
+            return d.predictions[15]
+        })
+
+    svg.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(8000)
+        .style("fill", function(d) {
+            return d.predictions[16]
+        })
+
+    svg.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(8500)
+        .style("fill", function(d) {
+            return d.predictions[17]
+        })
+
+    svg.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(9000)
+        .style("fill", function(d) {
+            return d.predictions[18]
+        })
+
+    svg.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(10000)
+        .style("fill", function(d) {
+            return d.predictions[19]
+        })
+
+    svg.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(10500)
+        .style("fill", function(d) {
+            return d.predictions[20]
+        })
+
+}
+
+function draw5(){}
 
 //Array of all the graph functions
 //Will be called from the scroller functionality
@@ -252,7 +428,8 @@ let activationFunctions = [
     draw1,
     draw2,
     draw3,
-    draw4
+    draw4,
+    draw5
 ]
 
 // This specifies that scrolling occurs over the 'graphic' div that contains the text content on the left side.
