@@ -32,7 +32,6 @@ const height = 950 - margin.top - margin.bottom
 //Create the initial visualisation
 
 
-
 d3.csv('data/recent-grads.csv', function(d){
     return {
         Major: d.Major,

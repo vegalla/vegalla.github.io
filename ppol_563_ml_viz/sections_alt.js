@@ -21,6 +21,7 @@ var y_scale = d3.scaleLinear()
 // Read in DC Metro Graph data and perform the following function to draw it
 d3.json("data/dc_metro_graph.json")
     .then(function(d){
+        console.log(d)
         dataset = d
         drawInitial()
     });
@@ -40,42 +41,48 @@ function drawInitial(){
         .data(dataset.links)
         .enter()
         .append("line")
-        .style("stroke", "#aaa")
+        .attr("x1", function(l) {
+                var source_node = dataset.nodes.filter(function(d, i) {
+                return i == l.source
+                })[0];
+                d3.select(this).attr("y1", y_scale(source_node.cy));
+                return x_scale(source_node.cx)
+            })
+            .attr("x2", function(l) {
+                var target_node = dataset.nodes.filter(function(d, i) {
+                return i == l.target
+                })[0];
+                d3.select(this).attr("y2", y_scale(target_node.cy));
+                return x_scale(target_node.cx)
+            })
+            .style("stroke", "#aaa")
 
-    // Initialize the nodes
-    nodes = svg
-        .selectAll("circle")
-        .data(dataset.nodes)
-        .enter()
-        .append("circle")
-        .attr("r", 5)
-        .style("fill", "#69b3a2")
+        // Initialize the nodes
+        nodes = svg
+            .selectAll("circle")
+            .data(dataset.nodes)
+            .enter()
+            .append("circle")
+            .attr("r", 5)
+            .attr("cx", function(d) {
+                return x_scale(d.cx)
+            })
+            .attr("cy", function(d) {
+                return y_scale(d.cy)
+            })
+            .style("fill", "#69b3a2")
 
-    // Force specification
-    // This produces the network layout from the initial draw of all nodes as a single circle in the corner.
-    simulation = d3.forceSimulation(dataset.nodes)              // Force algorithm is applied to data.nodes
-        .force("link", d3.forceLink()                               // This force provides links between nodes
-                .id(function(d) { return d.id; })                   // This provides the id of a node
-                .links(dataset.links)                               // and this the list of edges
-        )
-        .force("charge", d3.forceManyBody().strength(-20))          // This adds repulsion between nodes
-        .force("center", d3.forceCenter(width / 2, height / 2))     // This force attracts nodes to the center of the svg area
-        .on("end", ticked);
+    simulation = d3.forceSimulation(dataset.nodes)   
 
-    // This function is run at each iteration of the force algorithm, updating the nodes position.
-    function ticked() {
-        // This assigns four attributes to a link, two coordinate pairs that a line is drawn between
-        // x, y pairs will be the location of a node
-        links
-            .attr("x1", function(d) { return d.source.x; })
-            .attr("y1", function(d) { return d.source.y; })
-            .attr("x2", function(d) { return d.target.x; })
-            .attr("y2", function(d) { return d.target.y; });
-        // this assigned two attributes to a node, a coordinate pair for its location
+    // Define each tick of simulation
+    simulation.on('tick', () => {
         nodes
-            .attr("cx", function(d) { return d.x; })
-            .attr("cy", function(d) { return d.y; });
-    }
+            .attr('cx', d => x_scale(d.cx))
+            .attr('cy', d => y_scale(d.cy))
+    })
+       
+    // Stop the simulation until later
+    simulation.stop()
 
     // Tool tips
 
@@ -162,42 +169,13 @@ function clean(chartType){
 //First draw function
 
 function draw1(){
-    // simulation  
-    //     .force("link", d3.forceLink()                               // This force provides links between nodes
-    //             .id(function(d) { return d.id; })                   // This provides the id of a node
-    //             .links(dataset.links)                               // and this the list of edges
-    //     )
-    //     .force("charge", d3.forceManyBody().strength(-20))          // This adds repulsion between nodes
-    //     .force("center", d3.forceCenter(width / 2, height / 2))     // This force attracts nodes to the center of the svg area
-    //     .on("end", ticked);
-
-    // // This function is run at each iteration of the force algorithm, updating the nodes position.
-    // function ticked() {
-    //     // This assigns four attributes to a link, two coordinate pairs that a line is drawn between
-    //     // x, y pairs will be the location of a node
-    //     links
-    //         .attr("x1", function(d) { return d.source.x; })
-    //         .attr("y1", function(d) { return d.source.y; })
-    //         .attr("x2", function(d) { return d.target.x; })
-    //         .attr("y2", function(d) { return d.target.y; });
-    //     // this assigned two attributes to a node, a coordinate pair for its location
-    //     nodes
-    //         .attr("cx", function(d) { return d.x; })
-    //         .attr("cy", function(d) { return d.y; });
-    // }
-
-    // //Reheat simulation and restart
-    // simulation.alpha(0.9).restart()
-}
-
-function draw2(){
-    
     let svg = d3.select("#vis")
-                    .select('svg')
-                    .attr('width', 800)
-                    .attr('height', 750)
+        .select('svg')
+        .attr('width', 800)
+        .attr('height', 750)
 
-    // Fade links
+    simulation.stop()
+
     svg.selectAll('line')
         .transition().duration(500).delay(100)
         .attr('opacity', 0);
@@ -212,9 +190,7 @@ function draw2(){
             return y_scale(d.cy)
         })
 
-    // Re-introduce links
     svg.selectAll('line')
-        .transition().duration(500).delay(1000)
         .attr("x1", function(l) {
             var source_node = dataset.nodes.filter(function(d, i) {
                 return i == l.source.id
@@ -224,12 +200,59 @@ function draw2(){
         })
         .attr("x2", function(l) {
             var target_node = dataset.nodes.filter(function(d, i) {
-                return i == l.target.id
+            return i == l.target.id
             })[0];
             d3.select(this).attr("y2", y_scale(target_node.cy));
             return x_scale(target_node.cx)
         })
-        .style("stroke", "#aaa")
+
+    svg.selectAll('line')
+        .transition().duration(500).delay(100)
+        .attr('opacity', 1);
+
+}
+
+function draw2(){
+    let svg = d3.select("#vis")
+        .select('svg')
+        .attr('width', 800)
+        .attr('height', 750)
+
+    // Fade links
+    svg.selectAll('line')
+        .transition().duration(500).delay(100)
+        .attr('opacity', 0);
+
+    simulation  
+        .force("link", d3.forceLink()                               // This force provides links between nodes
+                .id(function(d) { return d.id; })                   // This provides the id of a node
+                .links(dataset.links)                               // and this the list of edges
+        )
+        .force("charge", d3.forceManyBody().strength(-20))          // This adds repulsion between nodes
+        .force("center", d3.forceCenter(width / 2, height / 2))     // This force attracts nodes to the center of the svg area
+        .on("end", ticked);
+
+    // This function is run at each iteration of the force algorithm, updating the nodes position.
+    function ticked() {
+        // This assigns four attributes to a link, two coordinate pairs that a line is drawn between
+        // x, y pairs will be the location of a node
+        links
+            .attr("x1", function(d) { return d.source.x; })
+            .attr("y1", function(d) { return d.source.y; })
+            .attr("x2", function(d) { return d.target.x; })
+            .attr("y2", function(d) { return d.target.y; });
+        // this assigned two attributes to a node, a coordinate pair for its location
+        nodes
+            .attr("cx", function(d) { return d.x; })
+            .attr("cy", function(d) { return d.y; });
+    }
+
+    //Reheat simulation and restart
+    simulation.alpha(0.9).restart()
+
+    // Fade links
+    svg.selectAll('line')
+        .transition().duration(500).delay(2000)
         .attr('opacity', 1);
 }
 
