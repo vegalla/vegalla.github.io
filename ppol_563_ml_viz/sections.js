@@ -22,6 +22,7 @@ var y_scale = d3.scaleLinear()
 d3.json("data/dc_metro_graph_predictions.json")
     .then(function(d){
         dataset = d
+        console.log(dataset)
         drawInitial()
     });
 
@@ -58,7 +59,7 @@ function drawInitial(){
                 .id(function(d) { return d.id; })                   // This provides the id of a node
                 .links(dataset.links)                               // and this the list of edges
         )
-        .force("charge", d3.forceManyBody().strength(-20))          // This adds repulsion between nodes
+        .force("charge", d3.forceManyBody().strength(-15))          // This adds repulsion between nodes
         .force("center", d3.forceCenter(width / 2, height / 2))     // This force attracts nodes to the center of the svg area
         .on("end", ticked);
 
@@ -162,37 +163,17 @@ function clean(chartType){
 //First draw function
 
 function draw1(){
-    // simulation  
-    //     .force("link", d3.forceLink()                               // This force provides links between nodes
-    //             .id(function(d) { return d.id; })                   // This provides the id of a node
-    //             .links(dataset.links)                               // and this the list of edges
-    //     )
-    //     .force("charge", d3.forceManyBody().strength(-20))          // This adds repulsion between nodes
-    //     .force("center", d3.forceCenter(width / 2, height / 2))     // This force attracts nodes to the center of the svg area
-    //     .on("end", ticked);
-
-    // // This function is run at each iteration of the force algorithm, updating the nodes position.
-    // function ticked() {
-    //     // This assigns four attributes to a link, two coordinate pairs that a line is drawn between
-    //     // x, y pairs will be the location of a node
-    //     links
-    //         .attr("x1", function(d) { return d.source.x; })
-    //         .attr("y1", function(d) { return d.source.y; })
-    //         .attr("x2", function(d) { return d.target.x; })
-    //         .attr("y2", function(d) { return d.target.y; });
-    //     // this assigned two attributes to a node, a coordinate pair for its location
-    //     nodes
-    //         .attr("cx", function(d) { return d.x; })
-    //         .attr("cy", function(d) { return d.y; });
-    // }
-
-    //Reheat simulation and restart
-    simulation.alpha(0.9).restart()
+    // Reheat simulation and restart
+    simulation.restart()
 }
 
-function draw2(){}
+function draw2(){
+    // Introduction cont.
+}
 
-function draw3(){}
+function draw3(){
+    // Graph theory explanation; no draw consider adding pop-up on right of neural network infrastructure diagram
+}
 
 function draw4(){
     
@@ -205,7 +186,7 @@ function draw4(){
 
     // Fade links
     svg.selectAll('line')
-        .attr('opacity', 0);
+        .attr('opacity', 0)
 
     // Transition Nodes
     svg.selectAll('circle')
@@ -241,12 +222,115 @@ function draw4(){
         
     svg.selectAll('line')
         .transition()
-            .duration(500)
+            .duration(1000)
             .delay(1500)
         .attr('opacity', 1);
 }
 
 function draw5(){
+    // Neural Network explanation; no draw consider adding pop-up on right of neural network infrastructure diagram
+    let svg = d3.select("#vis")
+        .select('svg')
+        .attr('width', 800)
+        .attr('height', 750)
+
+    svg.selectAll('circle')
+        .transition()
+            .duration(500)
+        .style("fill", "#69b3a2")
+}
+
+function draw6(){
+    let svg = d3.select("#vis")
+        .select('svg')
+        .attr('width', 800)
+        .attr('height', 750)
+
+    var labels = {36: "red",
+                  65: "red",
+                  46: "silver",
+                  88: "silver",
+                  55: "orange",
+                  81: "orange",
+                   3: "blue",
+                  32: "blue",
+                  24: "yellow",
+                  40: "yellow",
+                   8: "green",
+                  83: "green"} 
+
+                  
+    svg.selectAll('circle')
+        .transition()
+            .duration(75)
+        .style("fill", function(d){
+            var id = d.id
+            if (d.id in labels) {
+                return labels[id]
+            }  else {
+                return "#69b3a2"
+            }
+        })
+
+    svg.selectAll('circle')
+        .transition()
+            .duration(75)
+            .delay(200)
+        .style("fill", "#69b3a2")
+
+    svg.selectAll('circle')
+        .transition()
+            .duration(75)
+            .delay(400)
+        .style("fill", function(d){
+            var id = d.id
+            if (d.id in labels) {
+                return labels[id]
+            }  else {
+                return "#69b3a2"
+            }
+        })
+
+    svg.selectAll('circle')
+        .transition()
+            .duration(75)
+            .delay(600)
+        .style("fill", "#69b3a2")
+
+    svg.selectAll('circle')
+        .transition()
+            .duration(75)
+            .delay(800)
+        .style("fill", function(d){
+            var id = d.id
+            if (d.id in labels) {
+                return labels[id]
+            }  else {
+                return "#69b3a2"
+            }
+        })
+
+    svg.selectAll('circle')
+        .transition()
+            .duration(75)
+            .delay(1000)
+        .style("fill", "#69b3a2")
+
+    svg.selectAll('circle')
+        .transition()
+            .duration(500)
+            .delay(1200)
+        .style("fill", function(d){
+            var id = d.id
+            if (d.id in labels) {
+                return labels[id]
+            }  else {
+                return "black"
+            }
+        })
+}
+
+function draw7(){
     let svg = d3.select("#vis")
         .select('svg')
         .attr('width', 800)
@@ -422,9 +506,29 @@ function draw5(){
             return d.predictions[20]
         })
 
+
 }
 
-function draw6(){}
+function draw8(){
+
+    let svg = d3.select("#vis")
+        .select('svg')
+        .attr('width', 800)
+        .attr('height', 750)
+
+    svg.selectAll('circle')
+        .transition()
+            .duration(1000)
+            .delay(1000)
+        .style("fill", function(d) {
+            return d.predictions[21]
+        })
+}
+
+function draw9(){
+
+}
+
 
 //Array of all the graph functions
 //Will be called from the scroller functionality
@@ -435,7 +539,10 @@ let activationFunctions = [
     draw3,
     draw4,
     draw5,
-    draw6
+    draw6,
+    draw7,
+    draw8,
+    draw9
 ]
 
 // This specifies that scrolling occurs over the 'graphic' div that contains the text content on the left side.
