@@ -1,0 +1,251 @@
+<html lang="en">
+<!-- head section -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- call to style.css for additional formatting -->
+    <link rel = "stylesheet" href="style.css">
+    <!-- call to D3.js to use framework -->
+    <script src = 'https://d3js.org/d3.v7.min.js'></script>
+    <!-- meta data -->
+    <meta property = 'og:title' content='PPOL 563: Machine Learning Visualization'/>
+    <meta property = 'og:description' content='Visualization for Graph Machine Learning'/>
+    <meta property = 'og:url' content='https://vegalla.github.io/ppol_563_ml_viz/'/>
+
+    <!-- title -->
+    <title>PPOL 563: Machine Learning Visualization</title>
+</head>
+
+<!-- body section -->
+<body>
+    <!-- div for tool tips -->
+    <div id = 'tooltip'></div>
+    <!-- div for web page -->
+    <div id = "graphic">
+        <!-- div for left hand side (text content) -->
+        <div id = "sections">
+            <!-- index 1 -->
+            <section class = "step">
+                <div class = "title"></div>
+                <!-- The following line is the first instance of a line break; without line breaks text will wrap as a single block -->
+                <br>
+                <h1>Graph Machine Learning</h1>
+                
+                <p>By Vince Egalla</p>
+                
+                <p>
+                Graph machine learning offers an intriguing approach into understanding the underlying patterns of a network.
+                <br><br>
+                But what is a network? You first thought may be a social network, such as Facebook, Twitter, Instagram, 
+                where each friend or follow is a connected point. That is correct - but is only one application.
+                <br><br>
+                The internet itself may also be considered a network, where each website and its internal links are a point.
+                Scrolling through a page from one link to another to surf the web is navigation through the network.
+                <br><br> 
+                The graph on the right is also a network you could navigate through! Can you guess what it is?
+                </p>
+            </section>
+
+            <!-- index 2 -->
+            <section class = 'step'>
+                <p>
+                Hover over a circle! You may recognize a DC Metro station from your daily commute!
+                <br><br>
+                This graph doesn't look remotely close to the WMATA map, but it is the DC Metro System.
+                It is produced by allowing graph physics to set the layout. 
+                <br><br>
+                I'll be using this network for graph machine learning:
+                deep semi-supervised learning for prediction of a station's line
+                <ul>
+                    <li>silver</li>
+                    <li>orange</li>
+                    <li>blue</li>
+                    <li>yellow</li>
+                    <li>green</li>
+                    <li>red</li>
+                </ul> <br>
+                For introductory information about graph theory, continue reading below.
+                </p>
+            </section>
+
+            <!-- index 3 -->
+            <section class = 'step'>
+                <p>
+                <h2>Graph Theory</h2>
+                Graphs are mathematical structures that model relationships between objects. A graph is
+                composed of objects (nodes) and are connected by a relationship (edge). Nodes are also known as
+                vertices and points. Edges are also known as links and lines. 
+                <br><br>
+                There are undirected graphs, in which the edge is symmetric, indicating the relationship between 
+                objects goes both ways, and also directed graphs, in which edges may only go in one direction. 
+                For example, Arthur and Beth follow each other on social media creating a symmetric relationship, 
+                while Charles only follows Beth in an asymmetric relationship. 
+                <br><br>
+                Graphs may be classified as simple, in which nodes may only have one connecting edge
+                between each other, or as a multi-graph allowing multiple edges between the same pair of nodes.
+                <br><br>
+                Lastly, graphs may permit loops or not, in which a node may connect to itself with an edge.
+                </p>
+            </section>
+
+            <!-- index 4 -->
+            <section class = 'step'>
+                <p>
+                <h2>DC Metro System</h2>
+                Compared to the previous layout, the nodes are now in their relative geographic positions.
+                Even without the DC / Maryland / Virginia borders, can you better identify the shape of the metro system?
+                <br><br>
+                Without the system's lines it may still be difficult; however, we'll solve that with deep graph learning, specifically
+                <a href= https://arxiv.org/pdf/1609.02907.pdf>semi-supervised classification with graph convolutional networks</a>.
+                <br><br>
+                This machine learning technique will use a simple neural network, consisting of two layers:
+                <ul>
+                    <li>input layer of nodes</li>
+                    <li>output layer of line classification probabilities</li>
+                </ul><br>
+                It is specifically a graph convolutional network. 
+                In this network, the nodes and how its linked to neighbors are the basis for discovering latent patterns.
+                <br><br>
+                For introductory information about neural networks, continue reading below.
+                </p>
+            </section>
+
+            <!-- index 5 -->
+            <section class = 'step'>
+                <p>
+                <h2>Neural Networks</h2>
+                Artificial neural networks (ANN) are a machine learning method inspired by biological neurons
+                of the human brain. ANN structure may be simplified into an input layer, hidden layer(s), and an output
+                layer. The input layer is the data’s features. Hidden layers have some specified number of
+                nodes that learn latent features of the data, acting similarly to biological neurons by associating input
+                activations together. Before the output layer, these features have been transformed to numerical
+                representations of important latent features. They finally feed into the
+                output layer, predicting the class of an observation. 
+                <br><br>
+                ANNs utilizes machine learning when given data that already has
+                class labels and trains to predict them, known as supervised machine learning. For a labeled
+                observation, the ANN will improve upon its prediction by calculating the loss when incorrect and
+                adjusting parameters of the hidden layers through a backpropogation method. The parameters of the
+                ANN are set randomly and improve over a specified number of cycles. 
+                <br><br>
+                In summary, ANNs begins with practically random predictions, but over time, learns better latent features from the input and
+                ultimately predicts class with greater accuracy.
+                </p>
+            </section>
+
+            <!-- index 6 -->
+            <section class = 'step'>
+                <p>
+                <h2>Preparation</h2>
+                Since I am doing semi-supervised machine learning, it's necessary to have labels on some of the nodes.
+                <br><br>
+                The colored nodes represent stations along their real lines. The nodes are provided labels if that station only has one line
+                and maximizes distance between labeled nodes. This causes closely proximated nodes, such as yellow and green, and stretches of
+                unlabeled nodes, where they are mostly multiple lines, such as yellow/green or silver/orange/blue.
+                <br><br>
+                All nodes will be predicted for a color/line. This is a limitation as stations may have multiple lines, while this
+                currently implements a single classification for a station. For labeled nodes, their prediction will be used for comparison and learning.
+                If the prediction is wrong, then the neural network will recalculate its internal algorithm to improve in another iteration.
+                <br><br>
+                For the neural network, there will be 100 epochs to learn over.
+                </p>
+            </section>
+
+            <!-- index 7 -->
+            <section class = 'step'>
+                <p>
+                <h2>Predictions</h2>
+                The neural networks's predictions from the first 40 epochs are visualized over the graph. 
+                <br><br>
+                The following chart demonstrates loss calculated in each epoch. 
+                </p>
+                <img src = "graphics/plot_loss.png" alt = "Loss by Epochs">
+                <p>
+                In the first 40, loss decreases the most steeply before tapering out until the last epoch.
+                Loss is calculated based off the labeled nodes only. While they seem to be unchanged over the epochs,
+                their underlying numbers are the basis for improvements over time.
+                </p>
+            </section>
+
+            <!-- index 8 -->
+            <section class = 'step'>
+                <p>
+                <h2>Final Prediction</h2>
+                Here is the final prediction of colors at the 100th epoch.
+                <br><br>
+                Does this look like the WMATA map you're familiar with?
+                <br><br>
+                </p>
+                <img src = "graphics/wmata_map.png" alt = "WMATA Map" width = 400px>
+                <p>
+                Unfortunately, it still doesn't... but hopefully, graph machine learning makes a little more sense!     
+                </p>
+            </section>
+
+            <!-- index 9 -->
+            <section class = 'step'>
+                <p>
+                <h2>Limitations</h2>
+                Although, this appears to be a simple graph, in which nodes can only have one line between each other,
+                the underlying graph is actually a multigraph. At this time, visualizing a multigraph, multiple links between nodes is not a priority.
+                <br><br>
+                The single classification per station is the largest limitation, given its real-life counterpart.
+                Multi-class prediction or assigning stations to line's that met a specified threshold could improve upon this.
+                The original inspiration of using subway data for network analysis used the system from Vienna, Austria. 
+                Vienna's subway system did much less overlapping lines between their public transit.
+                <br><br>
+                The neural network used in this visualization is actually rather shallow, and not 'deep' with only 2 layers.
+                A deep neural network with greater consideration for parameters, such as drop-out, weight decay, and learning rate could improve
+                the final prediction.
+                <br><br>
+                Thanks for checking this out! I hope it helped build a greater understanding of network analysis.     
+                </p>
+            </section>
+
+            <!-- index 10 -->
+            <section class = "step">
+                <h1>References</h1>
+                <h2>Graph Machine Learning</h2>
+                <p>
+                Inspiration for network analysis:<br>
+                Junya (openjny)<br>
+                <a href = 'https://www.kaggle.com/openjny/graph-machine-learning-with-subway-data'>Graph Machine Learning with Subway Data</a>
+                <br><br>
+                </p>
+                <h2>D3</h2>
+                <p>
+                Inspiration for scrolling website:<br>
+                Cuthbert Chow <br>
+                <a href = 'https://cuthchow.github.io/college-majors-visualisation/'>College Majors Visualization</a><br>
+                <a href = 'https://towardsdatascience.com/how-i-created-an-interactive-scrolling-visualisation-with-d3-js-and-how-you-can-too-e116372e2c73'>How I Created an Interactive, Scrolling Visualisation with D3.js, and how you can too</a>
+                <br><br>
+                Scott Murray<br>
+                <a href = 'https://wrlc-gu.primo.exlibrisgroup.com/discovery/fulldisplay?docid=alma991037144430904111&context=L&vid=01WRLC_GUNIV:01WRLC_GUNIV&lang=en&search_scope=DN_and_CI&adaptor=Local%20Search%20Engine&tab=Everything&query=any,contains,interactive%20data%20visualization%20for%20the%20web&sortby=rank'>Interactive Data Visualization for the Web</a><br>
+                Available to Georgetown students online through the library
+                <br><br>
+                D3.js Graph Gallery<br>
+                <a href = 'https://www.d3-graph-gallery.com/network.html'>Network Graph</a>
+                <br><br>
+                Jim Vallandingham<br>
+                <a href = 'https://vallandingham.me/scroller.html'>So You Want to Build a Scroller</a>
+                <br><br>
+                Michael Bostock<br>
+                <a href = 'https://bost.ocks.org/mike/scroll/'>How to Scroll</a>
+                </p>
+                <span></span><span></span><span></span>                
+            </section>
+           
+
+        </div>
+        <!-- div for right hand side (visualization) -->
+        <div id = "vis">
+
+        </div>
+    </div>
+        
+    <!-- calls to additional JavaScript functions -->
+    <script src = 'scroller.js'></script>
+    <script src = 'sections.js'></script>
+
+</body>
+</html>
