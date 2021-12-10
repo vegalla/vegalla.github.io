@@ -1,0 +1,144 @@
+Start,Stop,Line,Color
+Shady Grove,Rockville,1,red
+Rockville,Twinbrook,1,red
+Twinbrook,White Flint,1,red
+White Flint,Grosvenor-Strathmore,1,red
+Grosvenor-Strathmore,Medical Center,1,red
+Medical Center,Bethesda,1,red
+Bethesda,Friendship Heights,1,red
+Friendship Heights,Tenleytown-AU,1,red
+Tenleytown-AU,Van Ness-UDC,1,red
+Van Ness-UDC,Woodley Park,1,red
+Woodley Park,Dupont Circle,1,red
+Dupont Circle,Farragut North,1,red
+Farragut North,Metro Center,1,red
+Metro Center,Gallery Place,1,red
+Gallery Place,Judiciary Square,1,red
+Judiciary Square,Union Station,1,red
+Union Station,NoMa-Galllaudet,1,red
+NoMa-Galllaudet,Rhose Island Ave,1,red
+Rhose Island Ave,Brookland-CUA,1,red
+Brookland-CUA,Fort Totten,1,red
+Fort Totten,Takoma,1,red
+Takoma,Silver Spring,1,red
+Silver Spring,Forest Glen,1,red
+Forest Glen,Wheaton,1,red
+Wheaton,Glenmont,1,red
+Wiehle-Reston,Spring Hill,2,silver
+Spring Hill,Greensboro,2,silver
+Greensboro,Tysons Corner,2,silver
+Tysons Corner,McLean,2,silver
+McLean,East Falls Church,2,silver
+East Falls Church,Ballston-MU,2,silver
+Ballston-MU,Virginia Square-GMU,2,silver
+Virginia Square-GMU,Clarendon,2,silver
+Clarendon,Court House,2,silver
+Court House,Rosslyn,2,silver
+Rosslyn,Foggy Bottom-GWU,2,silver
+Foggy Bottom-GWU,Farragut West,2,silver
+Farragut West,McPherson Square,2,silver
+McPherson Square,Metro Center,2,silver
+Metro Center,Federal Triangle,2,silver
+Federal Triangle,Smithsonian,2,silver
+Smithsonian,LEnfant Plaza,2,silver
+LEnfant Plaza,Federal Center SW,2,silver
+Federal Center SW,Capitol South,2,silver
+Capitol South,Eastern Market,2,silver
+Eastern Market,Potomac Ave,2,silver
+Potomac Ave,Stadium-Armory,2,silver
+Stadium-Armory,Benning Rd,2,silver
+Benning Rd,Capitol Heights,2,silver
+Capitol Heights,Addison Rd,2,silver
+Addison Rd,Morgan Blvd,2,silver
+Morgan Blvd,Largo Town Center,2,silver
+Vienna,Dunn Loring,3,orange
+Dunn Loring,West Falls Church,3,orange
+West Falls Church,East Falls Church,3,orange
+East Falls Church,Ballston-MU,3,orange
+Ballston-MU,Virginia Square-GMU,3,orange
+Virginia Square-GMU,Clarendon,3,orange
+Clarendon,Court House,3,orange
+Court House,Rosslyn,3,orange
+Rosslyn,Foggy Bottom-GWU,3,orange
+Foggy Bottom-GWU,Farragut West,3,orange
+Farragut West,McPherson Square,3,orange
+McPherson Square,Metro Center,3,orange
+Metro Center,Federal Triangle,3,orange
+Federal Triangle,Smithsonian,3,orange
+Smithsonian,LEnfant Plaza,3,orange
+LEnfant Plaza,Federal Center SW,3,orange
+Federal Center SW,Capitol South,3,orange
+Capitol South,Eastern Market,3,orange
+Eastern Market,Potomac Ave,3,orange
+Potomac Ave,Stadium-Armory,3,orange
+Stadium-Armory,Minnesota Ave,3,orange
+Minnesota Ave,Deanwood,3,orange
+Deanwood,Cheverly,3,orange
+Cheverly,Landover,3,orange
+Landover,New Carrollton,3,orange
+Franconia-Springfield,Van Dorn St,4,blue
+Van Dorn St,King St-Old Town,4,blue
+King St-Old Town,Braddock Rd,4,blue
+Braddock Rd,Ronald Reagan Washington National Airport,4,blue
+Ronald Reagan Washington National Airport,Crystal City,4,blue
+Crystal City,Pentagon City,4,blue
+Pentagon City,Pentagon,4,blue
+Pentagon,Arlington Cemetery,4,blue
+Arlington Cemetery,Rosslyn,4,blue
+Rosslyn,Foggy Bottom-GWU,4,blue
+Foggy Bottom-GWU,Farragut West,4,blue
+Farragut West,McPherson Square,4,blue
+McPherson Square,Metro Center,4,blue
+Metro Center,Federal Triangle,4,blue
+Federal Triangle,Smithsonian,4,blue
+Smithsonian,LEnfant Plaza,4,blue
+LEnfant Plaza,Federal Center SW,4,blue
+Federal Center SW,Capitol South,4,blue
+Capitol South,Eastern Market,4,blue
+Eastern Market,Potomac Ave,4,blue
+Potomac Ave,Stadium-Armory,4,blue
+Stadium-Armory,Benning Rd,4,blue
+Benning Rd,Capitol Heights,4,blue
+Capitol Heights,Addison Rd,4,blue
+Addison Rd,Morgan Blvd,4,blue
+Morgan Blvd,Largo Town Center,4,blue
+Huntington,Eisenhower Ave,5,yellow
+Eisenhower Ave,King St-Old Town,5,yellow
+King St-Old Town,Braddock Rd,5,yellow
+Braddock Rd,Ronald Reagan Washington National Airport,5,yellow
+Ronald Reagan Washington National Airport,Crystal City,5,yellow
+Crystal City,Pentagon City,5,yellow
+Pentagon City,Pentagon,5,yellow
+Pentagon,LEnfant Plaza,5,yellow
+LEnfant Plaza,Archives,5,yellow
+Archives,Gallery Place,5,yellow
+Gallery Place,Mt. Vernon,5,yellow
+Mt. Vernon,Shaw-Howard U,5,yellow
+Shaw-Howard U,U St,5,yellow
+U St,Columbia Heights,5,yellow
+Columbia Heights,Georgia Ave-Petworth,5,yellow
+Georgia Ave-Petworth,Fort Totten,5,yellow
+Fort Totten,West Hyattsville,5,yellow
+West Hyattsville,Prince George s Plaza,5,yellow
+Prince George s Plaza,College Park-U of Md,5,yellow
+College Park-U of Md,Greenbelt,5,yellow
+Branch Ave,Suitland,6,green
+Suitland,Naylor Rd,6,green
+Naylor Rd,Southern Ave,6,green
+Southern Ave,Congress Heights,6,green
+Congress Heights,Anacostia,6,green
+Anacostia,Navy Yard-Ballpark,6,green
+Navy Yard-Ballpark,Waterfront,6,green
+Waterfront,LEnfant Plaza,6,green
+LEnfant Plaza,Archives,6,green
+Archives,Gallery Place,6,green
+Gallery Place,Mt. Vernon,6,green
+Mt. Vernon,Shaw-Howard U,6,green
+Shaw-Howard U,U St,6,green
+U St,Columbia Heights,6,green
+Columbia Heights,Georgia Ave-Petworth,6,green
+Georgia Ave-Petworth,Fort Totten,6,green
+Fort Totten,West Hyattsville,6,green
+West Hyattsville,Prince George s Plaza,6,green
+Prince George s Plaza,College Park-U of Md,6,green
+College Park-U of Md,Greenbelt,6,green

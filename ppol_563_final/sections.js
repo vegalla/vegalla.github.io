@@ -19,7 +19,7 @@ var y_scale = d3.scaleLinear()
     .range([margin.top + height, margin.top])
 
 // Read in DC Metro Graph data and perform the following function to draw it
-d3.json("data/dc_metro_graph_predictions.json")
+d3.json("_data/processed/dc_metro_graph_predictions.json")
     .then(function(d){
         dataset = d
         console.log(dataset)
