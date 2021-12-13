@@ -103,9 +103,7 @@ function drawInitial(){
             .style('left', (event.pageX + 10)+ 'px')
             .style('top', (event.pageY - 25) + 'px')
             .style('display', 'inline-block')
-            .html(`<strong>ID</strong> ${d.id}
-                  <br>
-                  <strong>Name</strong> ${d.name}`)
+            .html(`<strong>Name</strong> ${d.name}`) // Add tooltip for connected stations
     }
 
     // This function erases the tool tip display and resets the circle border to zero to remove the highlight.
