@@ -18,6 +18,16 @@ var y_scale = d3.scaleLinear()
     .domain([-1.05,  1.05])
     .range([margin.top + height, margin.top])
 
+function textPopupGraphs() {
+  var popup = document.getElementById("popupG");
+  popup.classList.toggle("show");
+}
+
+function textPopupNeuralNets() {
+    var popup = document.getElementById("popupNN");
+    popup.classList.toggle("show");
+  }
+
 // Read in DC Metro Graph data and perform the following function to draw it
 d3.json("data/processed/dc_metro_graph_predictions.json")
     .then(function(d){
@@ -170,10 +180,6 @@ function draw2(){
 }
 
 function draw3(){
-    // Graph theory explanation; no draw consider adding pop-up on right of neural network infrastructure diagram
-}
-
-function draw4(){
     
     let svg = d3.select("#vis")
                     .select('svg')
@@ -225,20 +231,7 @@ function draw4(){
         .attr('opacity', 1);
 }
 
-function draw5(){
-    // Neural Network explanation; no draw consider adding pop-up on right of neural network infrastructure diagram
-    let svg = d3.select("#vis")
-        .select('svg')
-        .attr('width', 800)
-        .attr('height', 750)
-
-    svg.selectAll('circle')
-        .transition()
-            .duration(500)
-        .style("fill", "#69b3a2")
-}
-
-function draw6(){
+function draw4(){
     let svg = d3.select("#vis")
         .select('svg')
         .attr('width', 800)
@@ -328,7 +321,7 @@ function draw6(){
         })
 }
 
-function draw7(){
+function draw5(){
     let svg = d3.select("#vis")
         .select('svg')
         .attr('width', 800)
@@ -507,7 +500,7 @@ function draw7(){
 
 }
 
-function draw8(){
+function draw6(){
 
     let svg = d3.select("#vis")
         .select('svg')
@@ -523,7 +516,7 @@ function draw8(){
         })
 }
 
-function draw9(){
+function draw7(){
 
 }
 
@@ -538,9 +531,7 @@ let activationFunctions = [
     draw4,
     draw5,
     draw6,
-    draw7,
-    draw8,
-    draw9
+    draw7
 ]
 
 // This specifies that scrolling occurs over the 'graphic' div that contains the text content on the left side.

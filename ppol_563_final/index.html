@@ -13,7 +13,7 @@
     <meta property = 'og:url' content='https://vegalla.github.io/ppol_563_final/'/>
 
     <!-- title -->
-    <title>PPOL 563: Machine Learning Visualization</title>
+    <title>Graph Machine Learning</title>
 </head>
 
 <!-- body section -->
@@ -64,31 +64,29 @@
                     <li>green</li>
                     <li>red</li>
                 </ul> <br>
-                For introductory information about graph theory, continue reading below.
+                For introductory information about graph theory, 
+                <div class="popup" onclick="textPopupGraphs()">
+                    click here.
+                    <span class="popuptext" id="popupG">
+                    Graphs are mathematical structures that model relationships between objects. A graph is
+                    composed of objects (nodes) and are connected by a relationship (edge). Nodes are also known as
+                    vertices and points. Edges are also known as links and lines. 
+                    <br><br>
+                    There are undirected graphs, in which the edge is symmetric, indicating the relationship between 
+                    objects goes both ways, and also directed graphs, in which edges may only go in one direction. 
+                    For example, Arthur and Beth follow each other on social media creating a symmetric relationship, 
+                    while Charles only follows Beth in an asymmetric relationship. 
+                    <br><br>
+                    Graphs may be classified as simple, in which nodes may only have one connecting edge
+                    between each other, or as a multi-graph allowing multiple edges between the same pair of nodes.
+                    <br><br>
+                    Lastly, graphs may permit loops or not, in which a node may connect to itself with an edge.
+                    </span>
+                </div>
                 </p>
             </section>
 
             <!-- index 3 -->
-            <section class = 'step'>
-                <p>
-                <h2>Graph Theory</h2>
-                Graphs are mathematical structures that model relationships between objects. A graph is
-                composed of objects (nodes) and are connected by a relationship (edge). Nodes are also known as
-                vertices and points. Edges are also known as links and lines. 
-                <br><br>
-                There are undirected graphs, in which the edge is symmetric, indicating the relationship between 
-                objects goes both ways, and also directed graphs, in which edges may only go in one direction. 
-                For example, Arthur and Beth follow each other on social media creating a symmetric relationship, 
-                while Charles only follows Beth in an asymmetric relationship. 
-                <br><br>
-                Graphs may be classified as simple, in which nodes may only have one connecting edge
-                between each other, or as a multi-graph allowing multiple edges between the same pair of nodes.
-                <br><br>
-                Lastly, graphs may permit loops or not, in which a node may connect to itself with an edge.
-                </p>
-            </section>
-
-            <!-- index 4 -->
             <section class = 'step'>
                 <p>
                 <h2>DC Metro System</h2>
@@ -106,34 +104,34 @@
                 It is specifically a graph convolutional network. 
                 In this network, the nodes and how its linked to neighbors are the basis for discovering latent patterns.
                 <br><br>
-                For introductory information about neural networks, continue reading below.
+                For introductory information about neural networks, 
+
+                <div class="popup" onclick="textPopupNeuralNets()">
+                    click here.
+                    <span class="popuptext" id="popupNN">
+                    <span class="tab"></span>Artificial neural networks (ANN) are a machine learning method inspired by biological neurons
+                    of the human brain. ANN structure may be simplified into an input layer, hidden layer(s), and an output
+                    layer. The input layer is the data’s features. Hidden layers have some specified number of
+                    nodes that learn latent features of the data, acting similarly to biological neurons by associating input
+                    activations together. Before the output layer, these features have been transformed to numerical
+                    representations of important latent features. They finally feed into the
+                    output layer, predicting the class of an observation. 
+                    <br><br>
+                    <span class="tab"></span>ANNs utilizes machine learning when given data that already has
+                    class labels and trains to predict them, known as supervised machine learning. For a labeled
+                    observation, the ANN will improve upon its prediction by calculating the loss when incorrect and
+                    adjusting parameters of the hidden layers through a backpropogation method. The parameters of the
+                    ANN are set randomly and improve over a specified number of cycles. 
+                    <br><br>
+                    <span class="tab"></span>In summary, ANNs begins with practically random predictions, but over time, learns better latent features from the input and
+                    ultimately predicts class with greater accuracy.
+                    </span>
+                </div>
+
                 </p>
             </section>
 
-            <!-- index 5 -->
-            <section class = 'step'>
-                <p>
-                <h2>Neural Networks</h2>
-                Artificial neural networks (ANN) are a machine learning method inspired by biological neurons
-                of the human brain. ANN structure may be simplified into an input layer, hidden layer(s), and an output
-                layer. The input layer is the data’s features. Hidden layers have some specified number of
-                nodes that learn latent features of the data, acting similarly to biological neurons by associating input
-                activations together. Before the output layer, these features have been transformed to numerical
-                representations of important latent features. They finally feed into the
-                output layer, predicting the class of an observation. 
-                <br><br>
-                ANNs utilizes machine learning when given data that already has
-                class labels and trains to predict them, known as supervised machine learning. For a labeled
-                observation, the ANN will improve upon its prediction by calculating the loss when incorrect and
-                adjusting parameters of the hidden layers through a backpropogation method. The parameters of the
-                ANN are set randomly and improve over a specified number of cycles. 
-                <br><br>
-                In summary, ANNs begins with practically random predictions, but over time, learns better latent features from the input and
-                ultimately predicts class with greater accuracy.
-                </p>
-            </section>
-
-            <!-- index 6 -->
+            <!-- index 4 -->
             <section class = 'step'>
                 <p>
                 <h2>Preparation</h2>
@@ -151,7 +149,7 @@
                 </p>
             </section>
 
-            <!-- index 7 -->
+            <!-- index 5 -->
             <section class = 'step'>
                 <p>
                 <h2>Predictions</h2>
@@ -168,7 +166,7 @@
                 </p>
             </section>
 
-            <!-- index 8 -->
+            <!-- index 6 -->
             <section class = 'step'>
                 <p>
                 <h2>Final Prediction</h2>
@@ -183,7 +181,7 @@
                 </p>
             </section>
 
-            <!-- index 9 -->
+            <!-- index 7 -->
             <section class = 'step'>
                 <p>
                 <h2>Limitations</h2>
@@ -203,7 +201,7 @@
                 </p>
             </section>
 
-            <!-- index 10 -->
+            <!-- index 8 -->
             <section class = "step">
                 <h1>References</h1>
                 <h2>Graph Machine Learning</h2>
