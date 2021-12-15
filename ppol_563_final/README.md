@@ -1,4 +1,4 @@
-# PPOL 563: Machine Learning Visualization
+# PPOL 563: Final
 
 For your final project, you will have the opportunity to draw on all the topics that we have discussed during the course. While not required, this project can draw from or build upon all your previous assignments in this course. As with your other assignments, the topic, data, technologies, visualizations, and methods to use are up to you. However, you must provide a “production” version of your final project with documentation that:
 
@@ -19,3 +19,4 @@ Your technical documentation that you submit must include:
 
 * The code/notebook used to build the visualization(s)
 * Where appropriate, comments describing the steps you have taken to produce the visualization
+
