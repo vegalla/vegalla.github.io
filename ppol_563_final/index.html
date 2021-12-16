@@ -153,13 +153,11 @@
             <section class = 'step'>
                 <p>
                 <h2>Predictions</h2>
-                The neural networks's predictions from the first 40 epochs are visualized over the graph. 
+                The neural network's predictions from the first 40 epochs are visualized over the graph. 
                 <br><br>
                 The following chart demonstrates loss calculated in each epoch. 
                 </p>
-                <!-- Replace with div for drawing this chart -->
                 <div id = "chart">
-
                 </div>
                 <p>
                 In the first 40, loss decreases the most steeply before tapering out until the last epoch.
@@ -174,6 +172,17 @@
                 <h2>Final Prediction</h2>
                 Here is the final prediction of colors at the 100th epoch.
                 <br><Br>
+                While deep graph learning has incredible potential, transportation systems are apparently a poor application.
+                Imagining a metro system that carried you through identical colors is surely a non-sensical and convoluted method of
+                transportation.
+                <br><br>
+                The primary issue of using transportation for network representation is their reliance on geographic proximity
+                that isn't generally considered when looking at graph data. The predictions seen here seem effectively random,
+                besides the labeled stations. 
+                <br><br>
+                Unfortunately, deep graph learning wasn't able to create an appropriate or accurate transporation system.
+                <br><br>
+                Next, we can look at a better comparison to the metro system.
                 </p>
             </section>
 
@@ -184,6 +193,11 @@
                 Even with a better layout, this doesn't quite look like the WMATA map you may be familiar with.
                 </p>
                 <img src = "graphics/wmata_map.png" alt = "WMATA Map" width = 400px>
+                <p>
+                Overall, this exercise is a poor machine learning attempt upon a theoretically relatable concept of networks.
+                It is apparent that simulating real world situations with data may not always be feasible. The processes used broadly
+                assumed simpler structure of highly complex data. Several limitations hampered the effectiveness of the model.
+                </p>
             </section>
 
             <!-- index 8 -->
@@ -191,10 +205,10 @@
                 <p>
                 <h2>Limitations</h2>
                 Although, this appears to be a simple graph, in which nodes can only have one line between each other,
-                the underlying graph is actually a multigraph. At this time, visualizing a multigraph, multiple links between nodes is not a priority.
+                the underlying graph is actually a multigraph. At this time, visualizing this type of graph with multiple links between nodes is not a priority.
                 <br><br>
                 The single classification per station is the largest limitation, given its real-life counterpart.
-                Multi-class prediction or assigning stations to line's that met a specified threshold could improve upon this.
+                Multi-class prediction or assigning stations to lines that met a specified threshold could improve upon this.
                 The original inspiration of using subway data for network analysis used the system from Vienna, Austria. 
                 Vienna's subway system did much less overlapping lines between their public transit.
                 <br><br>
