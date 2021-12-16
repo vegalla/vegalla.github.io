@@ -1,11 +1,16 @@
 // Global variables
-let svg, dataset, simulation, chart
+let svg, dataset, simulation
+let plot_loss, loss_data
 let links, nodes
 
 // Visualization parameters
 const margin = {left: 50, top: 50, bottom: 50, right: 50}
 const width = 750 - margin.left - margin.right
 const height = 750 - margin.top - margin.bottom
+const chart_margin = 30
+const chart_width = 400 - chart_margin
+const chart_height = 300 - chart_margin
+
 
 // Coordinates were already rescaled to [-1 . 1] in previous processing
 // Set domain to +0.05 to prevent node cut off
@@ -18,6 +23,14 @@ var y_scale = d3.scaleLinear()
     .domain([-1.05,  1.05])
     .range([margin.top + height, margin.top])
 
+var chart_x_scale = d3.scaleLinear()
+    .domain([0, 100])
+    .range([chart_margin, chart_width])
+
+var chart_y_scale = d3.scaleLinear()
+    .domain([0, 2])
+    .range([chart_height, chart_margin])
+
 function textPopupGraphs() {
   var popup = document.getElementById("popupG");
   popup.classList.toggle("show");
@@ -26,10 +39,16 @@ function textPopupGraphs() {
 function textPopupNeuralNets() {
     var popup = document.getElementById("popupNN");
     popup.classList.toggle("show");
-  }
+}
+
+d3.csv("data/processed/losses.csv")
+    .then(function(d){
+        loss_data = d
+        console.log(loss_data)
+    });
 
 // Read in DC Metro Graph data and perform the following function to draw it
-d3.json("data/processed/dc_metro_graph_predictions.json")
+d3.json("data/processed/dc_metro_graph.json")
     .then(function(d){
         dataset = d
         console.log(dataset)
@@ -161,24 +180,37 @@ function drawInitial(){
 
     // Loss Chart
 
-    let box = d3.select("#chart")
+    let plot_loss = d3.select("#chart")
         .append('svg')
         .attr('width', 400)
         .attr('height', 300)
         .attr('opacity', 1);
 
-
-    box.append("rect")
-        .attr("width", "100%")
-        .attr("height", "100%")
+    // Background
+    plot_loss.append("rect")
+        .attr("width", 400)
+        .attr("height", 300)
         .attr("fill", "white");
-}
 
-//Cleaning Function
-//Will hide all the elements which are not necessary for a given chart type 
+    // Points
+    dots = plot_loss
+        .selectAll("dot")
+        .data(loss_data)
+        .enter()
+        .append("circle")
+        .attr("cx", function (d) { return chart_x_scale(d.n_epochs); } )
+        .attr("cy", function (d) { return chart_y_scale(d.losses); } )
+        .attr("r", 2)
+        .style("fill", "#CC0000");
 
-function clean(chartType){
-    let chart = d3.select('#vis').select('svg')
+    // Axis
+    plot_loss.append("g")
+        .attr("transform", "translate(0," + chart_height + ")")
+        .call(d3.axisBottom(chart_x_scale));
+       
+    plot_loss.append("g")
+        .attr("transform", "translate(" + chart_margin + ",0)")
+        .call(d3.axisLeft(chart_y_scale));
 
 }
 
@@ -196,9 +228,9 @@ function draw2(){
 function draw3(){
     
     let svg = d3.select("#vis")
-                    .select('svg')
-                    .attr('width', 750)
-                    .attr('height', 750)
+        .select('svg')
+        .attr('width', 750)
+        .attr('height', 750)
 
     simulation.stop()
 
@@ -341,6 +373,13 @@ function draw5(){
         .attr('width', 750)
         .attr('height', 750)
 
+    let plot_loss = d3.select("#chart")
+        .select('svg')
+        .attr('width', 400)
+        .attr('height', 300)
+
+
+
     // Consider writing this into a function to be neater
     // Loop through length of d.predictions
     // enumerate delay start: 0 ++ 500
@@ -351,6 +390,13 @@ function draw5(){
             return d.predictions[0]
         })
 
+    plot_loss.selectAll('circle')
+        .transition()
+            .duration(100)
+        .style("fill", function(d) {
+            return d.color_1
+        })
+
     svg.selectAll('circle')
         .transition()
             .duration(100)
@@ -359,12 +405,29 @@ function draw5(){
             return d.predictions[1]
         })
 
+    plot_loss.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(500)
+        .style("fill", function(d) {
+            return d.color_2
+        })
+
+
     svg.selectAll('circle')
         .transition()
             .duration(100)
             .delay(1000)
         .style("fill", function(d) {
             return d.predictions[2]
+        })
+
+    plot_loss.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(1000)
+        .style("fill", function(d) {
+            return d.color_3
         })
 
     svg.selectAll('circle')
@@ -375,12 +438,29 @@ function draw5(){
             return d.predictions[3]
         })
 
+    plot_loss.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(1500)
+        .style("fill", function(d) {
+            return d.color_4
+        })
+
+
     svg.selectAll('circle')
         .transition()
             .duration(100)
             .delay(2000)
         .style("fill", function(d) {
             return d.predictions[4]
+        })
+
+    plot_loss.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(2000)
+        .style("fill", function(d) {
+            return d.color_5
         })
 
     svg.selectAll('circle')
@@ -391,12 +471,28 @@ function draw5(){
             return d.predictions[5]
         })
 
+    plot_loss.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(2500)
+        .style("fill", function(d) {
+            return d.color_6
+        })
+
     svg.selectAll('circle')
         .transition()
             .duration(100)
             .delay(3000)
         .style("fill", function(d) {
             return d.predictions[6]
+        })
+
+    plot_loss.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(3000)
+        .style("fill", function(d) {
+            return d.color_7
         })
 
     svg.selectAll('circle')
@@ -407,12 +503,28 @@ function draw5(){
             return d.predictions[7]
         })
 
+    plot_loss.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(3500)
+        .style("fill", function(d) {
+            return d.color_8
+        })
+
     svg.selectAll('circle')
         .transition()
             .duration(100)
             .delay(4000)
         .style("fill", function(d) {
             return d.predictions[8]
+        })
+
+    plot_loss.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(4000)
+        .style("fill", function(d) {
+            return d.color_9
         })
 
     svg.selectAll('circle')
@@ -423,12 +535,28 @@ function draw5(){
             return d.predictions[9]
         })
 
+        plot_loss.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(4500)
+        .style("fill", function(d) {
+            return d.color_10
+        })
+
     svg.selectAll('circle')
         .transition()
             .duration(100)
             .delay(5000)
         .style("fill", function(d) {
             return d.predictions[10]
+        })
+
+    plot_loss.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(5000)
+        .style("fill", function(d) {
+            return d.color_11
         })
 
     svg.selectAll('circle')
@@ -439,12 +567,28 @@ function draw5(){
             return d.predictions[11]
         })
 
+    plot_loss.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(5500)
+        .style("fill", function(d) {
+            return d.color_12
+        })
+
     svg.selectAll('circle')
         .transition()
             .duration(100)
             .delay(6000)
         .style("fill", function(d) {
             return d.predictions[12]
+        })
+
+    plot_loss.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(6000)
+        .style("fill", function(d) {
+            return d.color_13
         })
 
     svg.selectAll('circle')
@@ -455,12 +599,28 @@ function draw5(){
             return d.predictions[13]
         })
 
+    plot_loss.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(6500)
+        .style("fill", function(d) {
+            return d.color_14
+        })
+
     svg.selectAll('circle')
         .transition()
             .duration(100)
             .delay(7000)
         .style("fill", function(d) {
             return d.predictions[14]
+        })
+    
+    plot_loss.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(7500)
+        .style("fill", function(d) {
+            return d.color_15
         })
 
     svg.selectAll('circle')
@@ -471,12 +631,28 @@ function draw5(){
             return d.predictions[15]
         })
 
+    plot_loss.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(8000)
+        .style("fill", function(d) {
+            return d.color_16
+        })
+
     svg.selectAll('circle')
         .transition()
             .duration(100)
             .delay(8000)
         .style("fill", function(d) {
             return d.predictions[16]
+        })
+
+    plot_loss.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(8000)
+        .style("fill", function(d) {
+            return d.color_17
         })
 
     svg.selectAll('circle')
@@ -487,12 +663,28 @@ function draw5(){
             return d.predictions[17]
         })
 
+    plot_loss.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(8500)
+        .style("fill", function(d) {
+            return d.color_18
+        })
+
     svg.selectAll('circle')
         .transition()
             .duration(100)
             .delay(9000)
         .style("fill", function(d) {
             return d.predictions[18]
+        })
+
+    plot_loss.selectAll('circle')
+        .transition()
+            .duration(100)
+            .delay(9500)
+        .style("fill", function(d) {
+            return d.color_19
         })
 
     svg.selectAll('circle')
@@ -503,14 +695,13 @@ function draw5(){
             return d.predictions[19]
         })
 
-    svg.selectAll('circle')
+    plot_loss.selectAll('circle')
         .transition()
             .duration(100)
-            .delay(10500)
+            .delay(10000)
         .style("fill", function(d) {
-            return d.predictions[20]
+            return d.color_20
         })
-
 
 }
 
