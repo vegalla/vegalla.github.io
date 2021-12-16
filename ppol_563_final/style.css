@@ -64,6 +64,15 @@ strong {
     width: 800px;
 }
 
+#chart {
+    display: inline-block;
+    position: absolute;
+    margin-left: 0;
+    color: white;
+    height: 300px;
+    width: 400px;
+}
+
 .tick line {
     stroke: 'red'
 }

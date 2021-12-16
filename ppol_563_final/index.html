@@ -158,7 +158,9 @@
                 The following chart demonstrates loss calculated in each epoch. 
                 </p>
                 <!-- Replace with div for drawing this chart -->
-                <img src = "graphics/plot_loss.png" alt = "Loss by Epochs"> 
+                <div id = "chart">
+
+                </div>
                 <p>
                 In the first 40, loss decreases the most steeply before tapering out until the last epoch.
                 Loss is calculated based off the labeled nodes only. While they seem to be unchanged over the epochs,
@@ -171,17 +173,20 @@
                 <p>
                 <h2>Final Prediction</h2>
                 Here is the final prediction of colors at the 100th epoch.
-                <br><br>
-                Does this look like the WMATA map you're familiar with?
-                <br><br>
-                </p>
-                <img src = "graphics/wmata_map.png" alt = "WMATA Map" width = 400px>
-                <p>
-                Unfortunately, it still doesn't... but hopefully, graph machine learning makes a little more sense!     
+                <br><Br>
                 </p>
             </section>
 
             <!-- index 7 -->
+            <section class = 'step'>
+                <p>
+                <h2>Conclusion</h2>
+                Even with a better layout, this doesn't quite look like the WMATA map you may be familiar with.
+                </p>
+                <img src = "graphics/wmata_map.png" alt = "WMATA Map" width = 400px>
+            </section>
+
+            <!-- index 8 -->
             <section class = 'step'>
                 <p>
                 <h2>Limitations</h2>
@@ -201,7 +206,7 @@
                 </p>
             </section>
 
-            <!-- index 8 -->
+            <!-- index 9 -->
             <section class = "step">
                 <h1>References</h1>
                 <h3>Graph Machine Learning</h3>

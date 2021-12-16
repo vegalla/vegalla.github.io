@@ -1,0 +1,91 @@
+id,name,x,y,rescale_x,rescale_y
+0, Addison Rd,877,459,0.754,-0.148
+1, Anacostia,693,584,0.386,-0.460
+2, Archives,590,424,0.180,-0.060
+3, Arlington Cemetery,407,520,-0.186,-0.300
+4, Ballston-MU,251,434,-0.498,-0.085
+5, Benning Rd,831,459,0.662,-0.148
+6, Bethesda,361,222,-0.278,0.445
+7, Braddock Rd,504,705,0.008,-0.763
+8, Branch Ave,803,647,0.606,-0.618
+9, Brookland-CUA,674,300,0.348,0.250
+10, Capitol Heights,854,459,0.708,-0.148
+11, Capitol South,658,482,0.316,-0.205
+12, Cheverly,836,392,0.671,0.021
+13, Clarendon,297,434,-0.406,-0.085
+14, College Park-U of Md,691,166,0.382,0.585
+15, Columbia Heights,541,280,0.082,0.300
+16, Congress Heights,709,600,0.418,-0.500
+17, Court House,320,434,-0.360,-0.085
+18, Crystal City,470,659,-0.060,-0.648
+19, Deanwood,817,410,0.634,-0.026
+20, Dunn Loring,154,434,-0.692,-0.085
+21, Dupont Circle,468,306,-0.064,0.235
+22, East Falls Church,228,434,-0.544,-0.085
+23, Eastern Market,688,476,0.376,-0.190
+24, Eisenhower Ave,504,779,0.008,-0.948
+25, Farragut North,482,326,-0.036,0.185
+26, Farragut West,457,357,-0.086,0.108
+27, Federal Center SW,626,482,0.252,-0.205
+28, Federal Triangle,527,424,0.054,-0.060
+29, Foggy Bottom-GWU,432,357,-0.136,0.108
+30, Forest Glen,550,87,0.100,0.783
+31, Fort Totten,620,235,0.240,0.413
+32, Franconia-Springfield,330,816,-0.340,-1.040
+33, Friendship Heights,383,244,-0.234,0.390
+34, Gallery Place,590,400,0.180,0.000
+35, Georgia Ave-Petworth,566,254,0.132,0.365
+36, Glenmont,550,35,0.100,0.913
+37, Greenbelt,710,145,0.420,0.638
+38, Greensboro,153,377,-0.694,0.058
+39, Grosvenor-Strathmore,313,174,-0.374,0.565
+40, Huntington,504,816,0.008,-1.040
+41, Judiciary Square,631,400,0.262,0.000
+42, King St-Old Town,504,740,0.008,-0.850
+43, LEnfant Plaza,590,482,0.180,-0.205
+44, Landover,854,373,0.709,0.068
+45, Largo Town Center,900,459,0.800,-0.148
+46, McLean,185,408,-0.630,-0.020
+47, McPherson Square,502,357,0.004,0.108
+48, Medical Center,337,198,-0.326,0.505
+49, Metro Center,527,400,0.054,0.000
+50, Minnesota Ave,798,429,0.596,-0.073
+51, Morgan Blvd,923,459,0.846,-0.148
+52, Mt. Vernon,590,364,0.180,0.090
+53, Navy Yard-Ballpark,648,567,0.296,-0.418
+54, Naylor Rd,764,609,0.528,-0.523
+55, New Carrollton,873,354,0.746,0.115
+56, NoMa-Galllaudet,674,354,0.348,0.115
+57, Pentagon,452,583,-0.096,-0.458
+58, Pentagon City,452,624,-0.096,-0.560
+59, Potomac Ave,705,459,0.410,-0.148
+60, Prince George s Plaza,672,184,0.344,0.540
+61, Rhode Island Ave,674,327,0.348,0.183
+62, Rockville,243,104,-0.514,0.740
+63, Ronald Reagan Washington National Airport,504,679,0.008,-0.698
+64, Rosslyn,353,401,-0.294,-0.002
+65, Shady Grove,219,81,-0.562,0.798
+66, Shaw-Howard U,590,334,0.180,0.165
+67, Silver Spring,550,113,0.100,0.718
+68, Smithsonian,527,456,0.054,-0.140
+69, Southern Ave,733,613,0.466,-0.533
+70, Spring Hill,138,362,-0.724,0.095
+71, Stadium-Armory,740,459,0.480,-0.148
+72, Suitland,784,628,0.568,-0.570
+73, Takoma,560,174,0.120,0.565
+74, Tenleytown-AU,399,255,-0.202,0.363
+75, Twinbrook,267,128,-0.466,0.680
+76, Tysons Corner,169,393,-0.662,0.018
+77, U St,566,306,0.132,0.235
+78, Union Station,674,381,0.348,0.048
+79, Van Dorn St,377,760,-0.246,-0.900
+80, Van Ness-UDC,421,248,-0.158,0.380
+81, Vienna,124,434,-0.752,-0.085
+82, Virginia Square-GMU,274,434,-0.452,-0.085
+83, Waterfront,624,567,0.248,-0.418
+84, West Falls Church,184,434,-0.632,-0.085
+85, West Hyattsville,652,203,0.304,0.493
+86, Wheaton,550,61,0.100,0.848
+87, White Flint,290,151,-0.420,0.623
+88, Wiehle-Reston,122,346,-0.756,0.135
+89, Woodley Park,452,289,-0.096,0.278

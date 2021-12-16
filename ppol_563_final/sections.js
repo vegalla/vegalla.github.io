@@ -1,11 +1,11 @@
 // Global variables
-let svg, dataset, simulation
+let svg, dataset, simulation, chart
 let links, nodes
 
 // Visualization parameters
 const margin = {left: 50, top: 50, bottom: 50, right: 50}
-const width = 800 - margin.left - margin.right
-const height = 800 - margin.top - margin.bottom
+const width = 750 - margin.left - margin.right
+const height = 750 - margin.top - margin.bottom
 
 // Coordinates were already rescaled to [-1 . 1] in previous processing
 // Set domain to +0.05 to prevent node cut off
@@ -41,7 +41,7 @@ function drawInitial(){
     // Append the svg object to the body of the page, the 'vis' div
     let svg = d3.select("#vis")
         .append('svg')
-        .attr('width', 800)
+        .attr('width', 750)
         .attr('height', 750)
         .attr('opacity', 1);
 
@@ -70,7 +70,7 @@ function drawInitial(){
                 .links(dataset.links)                               // and this the list of edges
         )
         .force("charge", d3.forceManyBody().strength(-15))          // This adds repulsion between nodes
-        .force("center", d3.forceCenter(width / 2, height / 2))     // This force attracts nodes to the center of the svg area
+        .force("center", d3.forceCenter((width / 2) + 60, (height / 2) + 50 ))     // This force attracts nodes to the center of the svg area
         .on("end", ticked);
 
     // This function is run at each iteration of the force algorithm, updating the nodes position.
@@ -158,13 +158,27 @@ function drawInitial(){
             .attr('opacity', 0.8)
             .attr('stroke-width', 1)
     }
+
+    // Loss Chart
+
+    let box = d3.select("#chart")
+        .append('svg')
+        .attr('width', 400)
+        .attr('height', 300)
+        .attr('opacity', 1);
+
+
+    box.append("rect")
+        .attr("width", "100%")
+        .attr("height", "100%")
+        .attr("fill", "white");
 }
 
 //Cleaning Function
 //Will hide all the elements which are not necessary for a given chart type 
 
 function clean(chartType){
-    let svg = d3.select('#vis').select('svg')
+    let chart = d3.select('#vis').select('svg')
 
 }
 
@@ -183,7 +197,7 @@ function draw3(){
     
     let svg = d3.select("#vis")
                     .select('svg')
-                    .attr('width', 800)
+                    .attr('width', 750)
                     .attr('height', 750)
 
     simulation.stop()
@@ -198,10 +212,10 @@ function draw3(){
             .duration(500)
             .delay(1000)
         .attr("cx", function(d) {
-            return x_scale(d.cx)
+            return x_scale(d.geo_cx)
         })
         .attr("cy", function(d) {
-            return y_scale(d.cy)
+            return y_scale(d.geo_cy)
         })
         .style("fill", "#69b3a2")
 
@@ -213,15 +227,15 @@ function draw3(){
             var source_node = dataset.nodes.filter(function(d, i) {
                 return i == l.source.id
             })[0];
-            d3.select(this).attr("y1", y_scale(source_node.cy));
-            return x_scale(source_node.cx)
+            d3.select(this).attr("y1", y_scale(source_node.geo_cy));
+            return x_scale(source_node.geo_cx)
         })
         .attr("x2", function(l) {
             var target_node = dataset.nodes.filter(function(d, i) {
                 return i == l.target.id
             })[0];
-            d3.select(this).attr("y2", y_scale(target_node.cy));
-            return x_scale(target_node.cx)
+            d3.select(this).attr("y2", y_scale(target_node.geo_cy));
+            return x_scale(target_node.geo_cx)
         })
         
     svg.selectAll('line')
@@ -234,7 +248,7 @@ function draw3(){
 function draw4(){
     let svg = d3.select("#vis")
         .select('svg')
-        .attr('width', 800)
+        .attr('width', 750)
         .attr('height', 750)
 
     var labels = {36: "red",
@@ -324,7 +338,7 @@ function draw4(){
 function draw5(){
     let svg = d3.select("#vis")
         .select('svg')
-        .attr('width', 800)
+        .attr('width', 750)
         .attr('height', 750)
 
     // Consider writing this into a function to be neater
@@ -504,7 +518,7 @@ function draw6(){
 
     let svg = d3.select("#vis")
         .select('svg')
-        .attr('width', 800)
+        .attr('width', 750)
         .attr('height', 750)
 
     svg.selectAll('circle')
@@ -518,8 +532,56 @@ function draw6(){
 
 function draw7(){
 
+    let svg = d3.select("#vis")
+                    .select('svg')
+                    .attr('width', 750)
+                    .attr('height', 750)
+
+    // Fade links
+    svg.selectAll('line')
+        .attr('opacity', 0)
+
+    // Transition Nodes
+    svg.selectAll('circle')
+        .transition()
+            .duration(500)
+            .delay(1000)
+        .attr("cx", function(d) {
+            return x_scale(d.cus_cx)
+        })
+        .attr("cy", function(d) {
+            return y_scale(d.cus_cy)
+        })
+
+    // Re-introduce links
+    svg.selectAll('line')
+        .transition()
+            .delay(500)
+        .attr("x1", function(l) {
+            var source_node = dataset.nodes.filter(function(d, i) {
+                return i == l.source.id
+            })[0];
+            d3.select(this).attr("y1", y_scale(source_node.cus_cy));
+            return x_scale(source_node.cus_cx)
+        })
+        .attr("x2", function(l) {
+            var target_node = dataset.nodes.filter(function(d, i) {
+                return i == l.target.id
+            })[0];
+            d3.select(this).attr("y2", y_scale(target_node.cus_cy));
+            return x_scale(target_node.cus_cx)
+        })
+
+    svg.selectAll('line')
+        .transition()
+            .duration(1000)
+            .delay(1500)
+        .attr('opacity', 1);
 }
 
+function draw8(){
+    // Limitations
+}
 
 //Array of all the graph functions
 //Will be called from the scroller functionality
@@ -531,7 +593,8 @@ let activationFunctions = [
     draw4,
     draw5,
     draw6,
-    draw7
+    draw7,
+    draw8
 ]
 
 // This specifies that scrolling occurs over the 'graphic' div that contains the text content on the left side.
