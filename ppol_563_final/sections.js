@@ -378,8 +378,6 @@ function draw5(){
         .attr('width', 400)
         .attr('height', 300)
 
-
-
     // Consider writing this into a function to be neater
     // Loop through length of d.predictions
     // enumerate delay start: 0 ++ 500
@@ -774,6 +772,10 @@ function draw8(){
     // Limitations
 }
 
+function draw9(){
+    // References
+}
+
 //Array of all the graph functions
 //Will be called from the scroller functionality
 
@@ -785,7 +787,8 @@ let activationFunctions = [
     draw5,
     draw6,
     draw7,
-    draw8
+    draw8,
+    draw9
 ]
 
 // This specifies that scrolling occurs over the 'graphic' div that contains the text content on the left side.
