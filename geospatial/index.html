@@ -1,1 +1,159 @@
-"Hello World!" 
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>D3: Current Status of VA Covid-19 Tracker</title>
+		<script type="text/javascript" src="./d3.js"></script>
+		<style type="text/css">
+			/* No style rules here yet */
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+
+			//Width and height
+			var w = 960;
+			var h = 500;
+
+			var projection = d3.geoConicConformal()
+							   .parallels([38 + 2 / 60, 39 + 12 / 60])
+							   .translate([600, 6000])
+							   .rotate([78.5, 0])
+							   .scale([8000]);
+
+			//Define path generator
+			var path = d3.geoPath()
+							 .projection(projection);
+
+			//Create SVG element
+			var svg = d3.select("body")
+						.append("svg")
+						.attr("width", w)
+						.attr("height", h);
+
+			//Define quantize scale to sort data values into buckets of color
+			var color = d3.scaleQuantize()
+								.range(["rgb(237,248,233)","rgb(186,228,179)","rgb(116,196,118)","rgb(49,163,84)","rgb(0,109,44)"]);
+								//Colors derived from ColorBrewer, by Cynthia Brewer, and included in
+								//https://github.com/d3/d3-scale-chromatic
+
+			//Load in agriculture data
+			d3.csv("./Assets/simpleCountyPopVA.csv", function(data) {
+
+				//Set input domain for color scale
+				color.domain([
+					d3.min(data, function(d) { return Math.log(parseFloat(d.Pop_2019)); }),
+					d3.max(data, function(d) { return Math.log(parseFloat(d.Pop_2019)); })
+				]);
+
+				//Load in GeoJSON data
+				d3.json("./Assets/va_cousub.json", function(json) {
+					//Merge the ag. data and GeoJSON
+					//Find the corresponding state inside the GeoJSON
+					for (var j = 0; j < json.features.length; j++) {
+						//Get County ID from GeoJSON data
+						var jsonRawCOUNTYFP = json.features[j].properties.COUNTYFP;
+						//Convert ID into comparable format
+						var jsonCOUNTYFP = "51" + jsonRawCOUNTYFP;
+						//Loop through once for each ag. data value
+						for (var i = 0; i < data.length; i++) {
+							//Grab state name
+							var dataCOUNTYFP = data[i].COUNTYFP;
+							//Grab data value, and convert from string to float
+							var dataValue = parseFloat(data[i].Pop_2019);
+							var logDataValue = Math.log(parseFloat(data[i].Pop_2019));
+							//Match Population Data to the County ID
+							if (dataCOUNTYFP == jsonCOUNTYFP) {
+								//Copy the data value into the JSON
+								json.features[j].properties.value = dataValue;
+								json.features[j].properties.logValue = logDataValue;
+								//Stop looking through the JSON
+								break;
+								}
+							}
+						}
+
+						//Bind data and create one path per GeoJSON feature
+					svg.selectAll("path")
+					  .data(json.features)
+					  .enter()
+					  .append("path")
+					  .attr("d", path)
+					  .attr("fill", pathFill)
+			 			 .on("mouseover", handleMouseOver)
+			 			 .on("mouseout", handleMouseOut)
+
+						function pathFill (d) {
+						  var value = parseFloat(d.properties.logValue); //Get data value
+						  if (value)
+								{ return color(value); }  //If value exists, return scaled color
+						  else
+								{ return "#ccc"; } //If value is undefined, return grey
+					   	};
+
+						function handleMouseOver(d, i) {
+							// Change color to orange
+							d3.select(this)
+								.attr("fill", "orange");
+							// Try to add labels
+
+							svg.append("text")
+								.attr("id", function() {
+									return "t" + d.properties.COUNTYFP + "-" + d.properties.COUSUBFP;
+									})
+								.text(function() {
+									return "Population: " + parseFloat(d.properties.value);
+									})
+							  .attr("x", function() {
+							  	return w / 100 + 20;
+							   	})
+							  .attr("y", function() {
+							   	return h / 50 + 20;
+							   	})
+							  .attr("font-family", "sans-serif")
+							  .attr("font-size", "11px")
+							  .attr("fill", "black")
+							}
+
+						function handleMouseOut(d, i) {
+							// Change color to original
+							d3.select(this)
+								.transition()
+								.duration(250)
+								.attr("fill", function(d) {
+									var value = parseFloat(d.properties.logValue); //Get data value
+									if (value)
+										{return color(value); }//If value exists, return scaled color
+									else
+										{return "#ccc"; 			}//If value is undefined, return grey
+									})
+							d3.select("#t" + d.properties.COUNTYFP + "-" + d.properties.COUSUBFP).remove();
+							}
+
+					});
+				});
+
+			//Specify Visualization Title
+			title = ["Virginia - Anticipated 2019 Population"]
+
+			//Test adding text
+			svg.selectAll("text")
+				   .data(title)
+				   .enter()
+				   .append("text")
+				   .text(function(d) {
+				   		return d;
+				   })
+				   .attr("x", function(d) {
+				   		return w / 100;
+				   })
+				   .attr("y", function(d) {
+				   		return h / 50;
+				   })
+				   .attr("font-family", "sans-serif")
+				   .attr("font-size", "11px")
+				   .attr("fill", "black");
+
+		</script>
+	</body>
+</html>
