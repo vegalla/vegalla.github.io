@@ -1,21 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.4032f593.css",
-    "main.js": "/static/js/main.546b12e4.js",
+    "main.css": "/static/css/main.04c2f9ad.css",
+    "main.js": "/static/js/main.1b804aa6.js",
     "static/js/787.5c467991.chunk.js": "/static/js/787.5c467991.chunk.js",
+    "static/media/01.png": "/static/media/01.f57edb64c395529b99c0.png",
     "static/media/profile-picture.jpg": "/static/media/profile-picture.1283821abb0e14398ff0.jpg",
+    "static/media/geospatial.png": "/static/media/geospatial.3fbfac59c9c0c948c5a5.png",
+    "static/media/georgetown.png": "/static/media/georgetown.f4426578225f6cf4bfac.png",
     "static/media/associate-solutions-architect.png": "/static/media/associate-solutions-architect.5de5ac5041c48c198d8b.png",
     "static/media/associate-developer.png": "/static/media/associate-developer.6b2fe0732acede573757.png",
     "static/media/specialty-data-analytics.png": "/static/media/specialty-data-analytics.8f8489d863ea5f87df93.png",
     "static/media/specialty-machine-learning.png": "/static/media/specialty-machine-learning.bca9c5fc8f20e7162bea.png",
     "static/media/WorkSans-Regular.woff2": "/static/media/WorkSans-Regular.f419195dc01c659cb8b0.woff2",
     "index.html": "/index.html",
-    "main.4032f593.css.map": "/static/css/main.4032f593.css.map",
-    "main.546b12e4.js.map": "/static/js/main.546b12e4.js.map",
+    "main.04c2f9ad.css.map": "/static/css/main.04c2f9ad.css.map",
+    "main.1b804aa6.js.map": "/static/js/main.1b804aa6.js.map",
     "787.5c467991.chunk.js.map": "/static/js/787.5c467991.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4032f593.css",
-    "static/js/main.546b12e4.js"
+    "static/css/main.04c2f9ad.css",
+    "static/js/main.1b804aa6.js"
   ]
 }
